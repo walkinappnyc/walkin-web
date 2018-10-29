@@ -4,11 +4,14 @@
   "private": true,
   "dependencies": {
     "bootstrap-material-design": "^4.1.1",
+    "node-sass": "^4.9.4",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-scripts": "2.0.3",
+    "react-slick": "^0.23.2",
+    "react-sticky-box": "^0.7.5",
     "redux": "^4.0.0",
     "redux-form": "^7.4.2",
     "redux-saga": "^0.16.0"
