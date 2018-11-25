@@ -1,0 +1,55 @@
+.featureCard {
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card {
+    display: inline-block;
+    width: 100%;
+    font-size: 18px;
+    font-family: 'roboto-light';
+    padding: 20px 100px 30px 20px;
+  }
+
+  .header {
+    color: #332a48;
+    font-family: 'roboto-bold';
+    font-size: 18px;
+  }
+
+  .featuredAmentites {
+    ul {
+      display: inline-block;
+
+      li {
+        float: left;
+        margin-right: 20px;
+
+        span {
+          vertical-align: text-top;
+        }
+      }
+    }
+
+    .svgStyles {
+      width: 35px;
+      height: 30px;
+      margin-right: 5px;
+      font-smoothing: antialiased;
+    }
+
+  }
+
+  .unitFeatureWrapper {
+    float: left;
+    width: 50%;
+
+  }
+
+  .buildingFreatureWrapper {
+    float: right;
+    width: 50%;
+  }
+}

@@ -1,0 +1,38 @@
+.recircCard {
+
+	height: 82px;
+	width: 367px;
+
+	.region {
+		color: #b66ba3;
+		font-family: 'roboto-bold';
+		font-size: 8px;
+		overflow: hidden;
+		text-align: left;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		width: 200px;
+	}
+
+	.address {
+		color: #6d5b97;
+		font-family: 'roboto-medium';
+		font-size: 11px;
+		overflow: hidden;
+		text-align: left;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		width: 200px;
+	}
+
+	.price {
+		font-family: 'roboto-medium';
+		font-size: 13px;
+	}
+
+	.svgStyle {
+		height: 21px;
+	  margin: 0 5px 0 0;
+	  width: 22px;
+	}
+}

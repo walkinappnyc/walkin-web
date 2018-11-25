@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import LargeCard from '../LargeCard/LargeCard';
-import SmallCard from '../SmallCard/SmallCard';
+import RecircCard from '../RecircCard/RecircCard';
 
 class Homepage extends Component {
   render() {
     return (
-      <div className="album py-5 bg-light">
+      <div className="album bg-light">
         <img style={{ width: '100%' }} src="welcome.png" />
-        <div className="container">
+        <div className="container py-5">
           <div className="row">
             <LargeCard/>
             <LargeCard/>
@@ -15,9 +15,9 @@ class Homepage extends Component {
             <LargeCard/>
             <LargeCard/>
             <LargeCard/>
-            <SmallCard/>
-            <SmallCard/>
-            <SmallCard/>
+            <RecircCard/>
+            <RecircCard/>
+            <RecircCard/>
           </div>
         </div>
       </div>

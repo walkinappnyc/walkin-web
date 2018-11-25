@@ -1,0 +1,141 @@
+.nextArrow {
+  &.slick-next {
+    right: 20px;
+    z-index: 1;
+    width: 24px;
+    height: 45px;
+
+    &:before {
+      content: '';
+      display: block;
+      background-image: url('/icons/right-arrow.svg');
+      width: 24px;
+      height: 45px;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+}
+
+.prevArrow {
+  &.slick-prev {
+    left: 20px;
+    z-index: 1;
+    width: 24px;
+    height: 45px;
+
+    &:before {
+      content: '';
+      display: block;
+      background-image: url('/icons/left-arrow.svg');
+      width: 24px;
+      height: 45px;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+}
+
+.stickySidebar {
+  color: #332a48;
+  font-family: 'roboto-medium';
+  font-size: 16px;
+  height: 50vh;
+  position: sticky;
+  top: 100px;
+  -webkit-font-smoothing: antialiased;
+
+  .wrapper {
+    padding: 25px 23px 20px;
+  }
+
+  .sidebarSection {
+    margin-top: 10px;
+    text-align: left;
+  }
+
+  .svgStyles {
+    display: inline-block;
+    float: left;
+    width: 22px;
+    margin: 0 5px 0 0;
+  }
+
+  .svgStylesText {
+    display: inline-block;
+    float: left;
+  }
+
+  .amenitie {
+    color: #d0021b;
+    font-size: 12px;
+  }
+
+  .price {
+    color: #000;
+    font-family: 'roboto-bold';
+    font-size: 40px;
+    margin: -7px 0px -12px 0;
+  }
+
+  .noFee {
+    color: #4a90e2;
+    font-size: 16px;
+  }
+
+  .address {
+    font-size: 16px;
+  }
+
+  .phone {
+
+  }
+
+  .sidebarButtons {
+    margin-top: 30px;
+
+  }
+
+  .btnMargin {
+    margin-top: 5px;
+  }
+}
+
+.unit {
+  .heroAddress {
+    font-family: 'roboto-light';
+    color: #fff;
+    font-size: 30px;
+  }
+
+  .similarHeader {
+    color: #332A48;
+    font-family: 'roboto-light';
+    font-size: 32px;
+    margin-top: 40px;
+    text-align: left;
+  }
+
+  .amentities {
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+
+  .unitFeatureWrapper {
+    float: left;
+    width: 50%;
+
+  }
+
+  .buildingFreatureWrapper {
+    float: right;
+    width: 50%;
+  }
+}
