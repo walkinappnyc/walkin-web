@@ -16,7 +16,6 @@ function SampleNextArrow(props) {
 
 function SamplePrevArrow(props) {
   const { classes, className, style, onClick } = props;
-  console.log(props)
   return (
     <div
       className={`${className} ${classes}`}
@@ -42,48 +41,59 @@ const svgStyles = {
   margin: '0 5px 0 14px',
 }
 
-const renderPill = () => {
+const renderPill = (place) => {
   const regions = [
-    { region: "Rockaway", color: "purple"},
-    { region: "University Heights", color: "red" },
-    { region: "Columbus Circle", color: "yellow" },
-    { region: "Upper East Side", color: "blue" },
+    { color: "purple" },
+    { color: "red" },
+    { color: "yellow" },
+    { color: "blue" },
   ]
   const randomPillNum = regions[Math.floor(Math.random()*regions.length)];
   const pillColor = randomPillNum.color;
-  const pillName = randomPillNum.region;
 
   return (
     <div className={`pill ${pillColor}`}>
-      {pillName}
+      {place}
     </div>
   )
 }
 
+const renderImages = (images) => {
+  return images.map((image => {
+    if (image.type === 'floorplan') return null;
+    return (
+      <Link to="/unit">
+        <img style={{ height: '210px' }} src={image.url} aria={image.description}/>
+      </Link>
+    )
+  }))
+}
+
 class LargeCard extends Component {
+
   render() {
+    const { property } = this.props
+    console.log(property)
     return (
       <div className="col-md-4 largeCard">
-        { renderPill() }
+        { renderPill(property.location.neighborhood) }
         <div className="card mb-4 box-shadow">
           <Slider {...settings}>
-            <img src="https://goldfarbproperties.com/uploads/_styles/carousel-slide/building/315-10g-kitchen.JPG" />
-            <img src="https://goldfarbproperties.com/uploads/_styles/carousel-slide/building/315-12h-bathroom-2.jpg" />
-            <img src="https://goldfarbproperties.com/uploads/_styles/carousel-slide/general/pts-gym.jpg" />
-            <img src="https://goldfarbproperties.com/uploads/_styles/carousel-slide/building/pts-garden.jpg" />
-            <img src="https://goldfarbproperties.com/uploads/_styles/carousel-slide/region/columbus-circle.jpg" />
+            { renderImages(property.media) }
           </Slider>
           <div className="card-body text-center">
             <div className="container">
               <div className="row justify-content-center">
-                <span className="card-text">$6,410  |  </span>
+                <span className="card-text">${property.details.price.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}  |  </span>
                 <img style={{...svgStyles}} className="card-img-top" src="icons/bed.svg" data-holder-rendered="true" />
-                <div>2 BED</div>
+                <div>{ property.details.bedrooms } BED</div>
                 <img style={{...svgStyles}} className="card-img-top" src="icons/bathtub.svg" data-holder-rendered="true" />
-                <div>2 BATH</div>
+                <div>{ property.details.bathrooms } BATH</div>
               </div>
               <div className="row justify-content-center">
-                <Link to="/unit"><small className="text-muted">20-10 Seagirt Bvld Far Rockaway, NY 11691</small></Link>
+                <Link to="/unit">
+                  <small className="text-muted">{property.location.address} {property.location.apartment}, {property.location.state} {property.location.zipcode}</small>
+                </Link>
               </div>
             </div>
           </div>

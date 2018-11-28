@@ -45,6 +45,29 @@ const paragraphStyles = {
 }
 
 class UnitPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: null,
+    };
+    this.renderCards = this.renderCards.bind(this);
+  }
+
+  componentDidMount() {
+    window.scrollTo(0, 0)
+    fetch('https://walkin-staging.herokuapp.com/api/properties')
+      .then((resp) => resp.json())
+      .then((data) => { this.setState({ data }) })
+  }
+
+  renderCards() {
+    const { data } = this.state;
+    if (!data) return null
+    return data.slice(0, 3).map(property => <LargeCard property={property} />)
+  }
+
+
   render() {
     return (
       <div className="unit">
@@ -132,9 +155,7 @@ class UnitPage extends Component {
 
           <div className="similarHeader">SIMILAR UNITS</div>
           <div className="row">
-            <LargeCard />
-            <LargeCard />
-            <LargeCard />
+            { this.renderCards() }
           </div>
         </div>
 

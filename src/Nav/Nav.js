@@ -4,6 +4,24 @@ import RecircCard from '../RecircCard/RecircCard';
 import './styles.scss'
 
 class Nav extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false,
+    };
+
+    this.toggleNav = this.toggleNav.bind(this)
+  }
+
+  toggleNav() {
+    this.setState({ isOpen: !this.state.isOpen })
+  }
+
+  dropNavClasses() {
+    if (this.state.isOpen) return 'dropMenu';
+    return 'hide'
+  }
+
   render() {
     return (
       <div>
@@ -13,21 +31,12 @@ class Nav extends Component {
               <Link to="/">
                 <strong>Walkin</strong>
               </Link>
-              <div className="btn-group">
-                <button type="button" className="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Rentals
-                </button>
-                <div className="dropdown-menu region">
-                  <a className="dropdown-item" href="#">Action</a>
-                  <a className="dropdown-item" href="#">Another action</a>
-                  <a className="dropdown-item" href="#">Something else here</a>
-                  <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">Separated link</a>
-                </div>
-              </div>
+              <a className="rentalsBtn" onClick={this.toggleNav} >
+                Rentals
+              </a>
             </div>
           </div>
-        <div className="dropMenu">
+        <div className={this.dropNavClasses()}>
           <div className="container">
             <div className="row">
               <div className="col-md-8">
