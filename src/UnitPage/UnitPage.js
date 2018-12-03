@@ -79,13 +79,13 @@ class UnitPage extends Component {
           <div className="row">
             <div className="col-md-9">
               <Slider {...settings}>
+                <img src="https://goldfarbproperties.com/uploads/_styles/carousel-slide/building/pts-garden.jpg" />
                 <img src="https://goldfarbproperties.com/uploads/_styles/carousel-slide/building/315-10g-kitchen.JPG" />
                 <img src="https://goldfarbproperties.com/uploads/_styles/carousel-slide/building/315-12h-bathroom-2.jpg" />
                 <img src="https://goldfarbproperties.com/uploads/_styles/carousel-slide/general/pts-gym.jpg" />
-                <img src="https://goldfarbproperties.com/uploads/_styles/carousel-slide/building/pts-garden.jpg" />
                 <img src="https://goldfarbproperties.com/uploads/_styles/carousel-slide/region/columbus-circle.jpg" />
               </Slider>
-              <div className="row">
+              <div className="row transit">
                 <DescriptorCard header="DESCRIPTION">
                   <p style={{ ...paragraphStyles }}>Brand new renovation! Be the first to live in this spacious unit with Stainless Steel Appliances and gorgeous views!</p>
                 </DescriptorCard>
@@ -94,7 +94,10 @@ class UnitPage extends Component {
                   <p style={{ ...paragraphStyles }}>Escape from the bustle of the city to a neighborhood full of life and natural serenity. Welcome to the Rockaways, where you can find an oceanfront community, lined with a 5-mile boardwalk. Relish the influx of eateries and artistic movements inspired by the Rockaway surf culture. In additional to sandy beaches and a cool sea breeze, enjoy extreme convenience to Manhattan through the ‘A’ train. This is your beach.</p>
                 </DescriptorCard>
                 <DescriptorCard header="TRANSPORTATION">
-                  <p style={{ ...paragraphStyles }}>The Grand Concourse, referred to as the “Park Avenue of the Bronx”, is lined with architecturally-significant buildings, many of which have been converted into exclusive condominiums and co-ops. The concourse is lined with iconic attractions including Yankee Stadium and the beautiful Bronx Museum of the Arts. The Grand Concourse, with its easy access to Manhattan, is inspiring a new wave of professionals and inviting those who want to live in luxury and reside only 20 minutes from Manhattan. The area is continuously growing and attracting diverse residents and businesses.</p>
+                  <p style={{ ...paragraphStyles }}>
+                    <span className="subway s1">1</span><span className="subway s2">2</span><span className="subway s3">3</span><span className="subway s4">4</span><span className="subway s5">5</span><span className="subway s6">6</span><span className="subway s7">7</span><span className="subway sA">A</span><span className="subway sC">C</span><span className="subway sE">E</span><span className="subway sB">B</span><span className="subway sD">D</span><span className="subway sF">F</span><span className="subway sM">M</span><span className="subway sG">G</span><span className="subway sJ">J</span><span className="subway sZ">Z</span><span className="subway sL">L</span><span className="subway sS">S</span><span className="subway sN">N</span><span className="subway sQ">Q</span><span className="subway sR">R</span><span className="subway sW">W</span>
+                    The Grand Concourse, referred to as the “Park Avenue of the Bronx”, is lined with architecturally-significant buildings, many of which have been converted into exclusive condominiums and co-ops. The concourse is lined with iconic attractions including Yankee Stadium and the beautiful Bronx Museum of the Arts. The Grand Concourse, with its easy access to Manhattan, is inspiring a new wave of professionals and inviting those who want to live in luxury and reside only 20 minutes from Manhattan. The area is continuously growing and attracting diverse residents and businesses.
+                  </p>
                 </DescriptorCard>
                 <DescriptorCard header="BUILDING">
                   <p style={{ ...paragraphStyles }}>Escape the city and enter serenity with your new home in Wavecrest Gardens. Indulge in luxurious oceanfront Rockaway Beach rentals with easy access to …</p>

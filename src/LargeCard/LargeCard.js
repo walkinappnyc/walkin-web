@@ -67,9 +67,9 @@ const renderImages = (images) => {
   return images.map((image => {
     if (image.type === 'floorplan') return null;
     return (
-      <Link to="/unit">
+      <a href="/unit">
         <img style={{ height: '210px' }} src={image.url} aria={image.description}/>
-      </Link>
+      </a>
     )
   }))
 }
@@ -80,7 +80,7 @@ class LargeCard extends Component {
     const { property } = this.props
     console.log(property)
     return (
-      <div className="col-md-4 largeCard">
+      <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 largeCard">
         { renderPill(property.location.neighborhood) }
         <div className="card mb-4 box-shadow">
           <Slider {...settings}>

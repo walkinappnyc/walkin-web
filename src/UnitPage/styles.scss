@@ -143,4 +143,26 @@
     float: right;
     width: 50%;
   }
+
+  .transit {
+    .subway {
+      border-radius: 30px;
+      display: inline-block;
+      font-weight: bold;
+      height: 28px;
+      margin: 5px;
+      text-align: center;
+      width: 28px;
+    }
+    .s1, .s2, .s3 { background-color: #ed462f; color: #fff; }
+    .s4, .s5, .s6 { background-color: #45943d; color: #fff; }
+    .s7 { background-color: #ba47ad; color: #fff; }
+    .sA, .sC, .sE { background-color: #2850ad; color: #fff; }
+    .sB, .sD, .sF, .sM { background-color: #ef6230; color: #fff; }
+    .sG { background-color: #6cbe45; color: #fff; }
+    .sJ, .sZ { background-color: #996633; color: #fff; }
+    .sL { background-color: #a7a9ac; color: #fff; }
+    .sS { background-color: #808183; color: #fff; }
+    .sN, .sQ, .sR, .sW { background-color: #fbcc33; color: #000; }
+  }
 }
