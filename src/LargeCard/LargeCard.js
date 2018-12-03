@@ -25,12 +25,17 @@ function SamplePrevArrow(props) {
   );
 }
 
+function renderBedroomText(rooms) {
+  if (rooms === '0') return "STUDIO"
+  return `${rooms} BED`
+}
+
 let settings = {
   infinite: true,
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
-  lazyLoad: 'progressive',
+  lazyLoad: 'ondemand',
   nextArrow: <SampleNextArrow classes="nextArrow" />,
   prevArrow: <SamplePrevArrow classes="prevArrow" />,
 };
@@ -84,15 +89,17 @@ class LargeCard extends Component {
           <div className="card-body text-center">
             <div className="container">
               <div className="row justify-content-center">
-                <span className="card-text">${property.details.price.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}  |  </span>
+                <span className="price">${property.details.price.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+                <span className="smDivider"></span>
+
                 <img style={{...svgStyles}} className="card-img-top" src="icons/bed.svg" data-holder-rendered="true" />
-                <div>{ property.details.bedrooms } BED</div>
+                <div>{ renderBedroomText(property.details.bedrooms) }</div>
                 <img style={{...svgStyles}} className="card-img-top" src="icons/bathtub.svg" data-holder-rendered="true" />
                 <div>{ property.details.bathrooms } BATH</div>
               </div>
               <div className="row justify-content-center">
                 <Link to="/unit">
-                  <small className="text-muted">{property.location.address} {property.location.apartment}, {property.location.state} {property.location.zipcode}</small>
+                  <div className="address ellipsis">{property.location.address} {property.location.apartment}, {property.location.state} {property.location.zipcode}</div>
                 </Link>
               </div>
             </div>

@@ -15,7 +15,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Nav/>
-          <div style={{ marginTop: '77px' }}>
+          <div style={{ marginTop: '64px' }}>
             <Route path="/" exact component={Homepage} />
             <Route path="/about" component={AboutPage} />
             <Route path="/region" component={RegionPage} />

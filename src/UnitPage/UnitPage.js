@@ -33,6 +33,7 @@ let settings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
+  className: "card mb-5",
   lazyLoad: 'progressive',
   nextArrow: <SampleNextArrow classes="nextArrow" />,
   prevArrow: <SamplePrevArrow classes="prevArrow" />,
@@ -106,7 +107,7 @@ class UnitPage extends Component {
 
 
             <div className="col-md-3 stickySidebar">
-              <div className="container card mb-4 box-shadow wrapper">
+              <div className="container card mb-5 box-shadow wrapper">
                 <div className="row">
                   <div className="col-md-12 amenitie">
                     1 YEAR FREE GYM
@@ -145,7 +146,9 @@ class UnitPage extends Component {
                     </button>
                   </div>
                   <div className="col-md-12">
-                    <button type="button" className="btn btn-outline-primary btn-block btnMargin">SHARE</button>
+                    <button type="button" className="btn btn-outline-primary btn-block btnMargin">
+                      <img className="logoBtn" src="logo.svg" />
+                    </button>
                   </div>
                 </div>
               </div>

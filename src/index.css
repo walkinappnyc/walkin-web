@@ -1,5 +1,6 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
+@import "~/node_modules/placeholder-loading/src/scss/placeholder-loading";
 
 a,
 .text-primary {
@@ -8,6 +9,24 @@ a,
 .btn.btn-outline-primary {
 	color: #6d5b97 !important;
 	border: 1px solid #6d5b97;
+  transition: none;
+}
+.btn.btn-outline-primary:hover {
+  background-color: rgba(109, 91, 151, 0.26);
+  border-color: #6d5b97;
+}
+.btn.btn-outline-primary:focus,
+.btn.btn-outline-primary:active,
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 0.2rem rgba(52, 42, 83, 0.35);
+  background-color: rgba(109, 91, 151, 0.26);
+  border-color: #6d5b97;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 body {
@@ -18,9 +37,4 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }

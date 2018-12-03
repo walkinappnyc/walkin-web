@@ -28,7 +28,7 @@ class Homepage extends Component {
     if (data === null) return null;
     return (
       <div className="album bg-light">
-        <img style={{ width: '100%' }} src="welcome.png" />
+        <img style={{ width: '100%' }} src="welcome.jpg" />
         <div className="container py-5">
           <div className="row">
             { this.renderCards() }

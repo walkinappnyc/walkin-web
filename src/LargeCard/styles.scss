@@ -29,13 +29,30 @@
       background-color: #2d80ae;
     }
   }
+  .price {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .smDivider {
+    background-color: rgba(109, 91, 151, 0.2);
+    height: 22px;
+    margin-left: 10px;
+    width: 1px;
+  }
+
+  .address {
+    max-width: 250px;
+    font-size: 14px;
+  }
 
   .nextArrow {
     &.slick-next {
-      right: 20px;
+      height: 200px;
+      right: 0px;
       z-index: 1;
-      width: 12px;
-      height: 22.5px;
+      width: 45px;
+
 
       &:before {
         content: '';
@@ -43,6 +60,7 @@
         background-image: url('/icons/right-arrow.svg');
         width: 12px;
         height: 22.5px;
+        margin: 83px auto;
         background-repeat: no-repeat;
         background-size: cover;
       }
@@ -51,13 +69,14 @@
 
   .prevArrow {
     &.slick-prev {
-      left: 20px;
+      height: 200px;
+      left: 0px;
       z-index: 1;
-      width: 12px;
-      height: 22.5px;
+      width: 45px;
 
       &:before {
         content: '';
+        margin: 83px auto;
         display: block;
         background-image: url('/icons/left-arrow.svg');
         width: 12px;

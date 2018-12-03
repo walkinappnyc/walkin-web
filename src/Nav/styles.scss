@@ -1,8 +1,15 @@
 .navbar {
-	padding: 27px 0;
+	background-color: #fff;
+	padding: 0;
 	z-index: 3;
 
+	.logo {
+		padding: 20px 0;
+		width: 85px;
+	}
+
 	.rentalsBtn {
+		padding: 20px;
 		cursor: pointer;
 	}
 
@@ -19,6 +26,7 @@
 	position: fixed;
 	width: 100%;
   right: 0;
+  top: 64px;
   z-index: 2;
 
   .menuHeader {
