@@ -13,6 +13,24 @@
 
   .bdrmBtn {
     margin-right: 6px;
+
+    &:focus {
+      box-shadow: none;
+      border-color: #6d5b97;
+      background-color: transparent;
+    }
+
+    &:hover {
+      box-shadow: none;
+      border-color: #6d5b97;
+      background-color: rgba(109, 91, 151, 0.26);
+    }
+
+    &.selected {
+      box-shadow: 0 0 0 0.2rem rgba(52, 42, 83, 0.35);
+      background-color: rgba(109, 91, 151, 0.26);
+      border-color: #6d5b97;
+    }
   }
 
   .sort {

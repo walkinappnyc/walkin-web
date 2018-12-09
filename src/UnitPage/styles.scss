@@ -107,6 +107,7 @@
 }
 
 .unit {
+
   .heroAddress {
     font-family: 'roboto-light';
     color: #fff;
@@ -131,6 +132,24 @@
       display: inline-block;
       width: 100%;
     }
+  }
+
+  .floorPlanPill{
+    -webkit-font-smoothing: antialiased;
+    background-color: #fff;
+    border-radius: 30px;
+    bottom: 60px;
+    color: #000;
+    cursor: pointer;
+    display: block;
+    font-family: 'roboto-bold';
+    font-size: 13px;
+    left: 31px;
+    padding: 1px 12px;
+    position: relative;
+    width: 100px;
+    box-shadow: 3px 3px 2px #808080;
+    z-index: 1;
   }
 
   .unitFeatureWrapper {

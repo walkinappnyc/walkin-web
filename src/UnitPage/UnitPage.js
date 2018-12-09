@@ -51,13 +51,15 @@ class UnitPage extends Component {
 
     this.state = {
       data: null,
+      property: null
     };
     this.renderCards = this.renderCards.bind(this);
+    this.renderFloorPlan = this.renderFloorPlan.bind(this);
   }
 
   componentDidMount() {
     window.scrollTo(0, 0)
-    fetch('https://walkin-staging.herokuapp.com/api/properties')
+    fetch(`https://walkin-staging.herokuapp.com/api/properties/`)
       .then((resp) => resp.json())
       .then((data) => { this.setState({ data }) })
   }
@@ -68,6 +70,10 @@ class UnitPage extends Component {
     return data.slice(0, 3).map(property => <LargeCard property={property} />)
   }
 
+  renderFloorPlan(floorplan) {
+    if (!floorplan) return null;
+    return <span data-toggle="modal" data-target="#floorPlan" className="floorPlanPill">Floor Plan</span>
+  }
 
   render() {
     return (
@@ -85,6 +91,7 @@ class UnitPage extends Component {
                 <img src="https://goldfarbproperties.com/uploads/_styles/carousel-slide/general/pts-gym.jpg" />
                 <img src="https://goldfarbproperties.com/uploads/_styles/carousel-slide/region/columbus-circle.jpg" />
               </Slider>
+              {this.renderFloorPlan(true)}
               <div className="row transit">
                 <DescriptorCard header="DESCRIPTION">
                   <p style={{ ...paragraphStyles }}>Brand new renovation! Be the first to live in this spacious unit with Stainless Steel Appliances and gorgeous views!</p>
@@ -220,6 +227,19 @@ class UnitPage extends Component {
                   </div>
                 </div>
               </form>
+            </div>
+          </div>
+        </div>
+
+        <div className="modal fade" id="floorPlan" tabindex="-1" role="dialog" >
+          <div className="modal-dialog modal-lg" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <img style={{ margin: '0 auto', width: '100%' }} src="https://goldfarbproperties.com/uploads/_floorplans/the-capri-gcc-16e.jpg" />
             </div>
           </div>
         </div>
