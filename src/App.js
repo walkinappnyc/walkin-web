@@ -19,7 +19,7 @@ class App extends Component {
             <Route path="/" exact component={Homepage} />
             <Route path="/about" component={AboutPage} />
             <Route path="/region" component={RegionPage} />
-            <Route path="/unit" component={UnitPage} />
+            <Route path="/unit/:unitID" component={UnitPage} />
           </div>
           <Footer/>
         </div>

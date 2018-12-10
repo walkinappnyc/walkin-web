@@ -63,11 +63,11 @@ const renderPill = (place) => {
   )
 }
 
-const renderImages = (images) => {
+const renderImages = (images, id) => {
   return images.map((image => {
     if (image.type === 'floorplan') return null;
     return (
-      <a href="/unit">
+      <a href={`/unit/${id}`}>
         <img style={{ height: '210px' }} src={image.url} aria={image.description}/>
       </a>
     )
@@ -78,13 +78,12 @@ class LargeCard extends Component {
 
   render() {
     const { property } = this.props
-    console.log(property)
     return (
       <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 largeCard">
         { renderPill(property.location.neighborhood) }
         <div className="card mb-4 box-shadow">
           <Slider {...settings}>
-            { renderImages(property.media) }
+            { renderImages(property.media, property.id) }
           </Slider>
           <div className="card-body text-center">
             <div className="container">
@@ -92,13 +91,13 @@ class LargeCard extends Component {
                 <span className="price">${property.details.price.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
                 <span className="smDivider"></span>
 
-                <img style={{...svgStyles}} className="card-img-top" src="icons/bed.svg" data-holder-rendered="true" />
+                <img style={{...svgStyles}} src="/icons/bed.svg" />
                 <div>{ renderBedroomText(property.details.bedrooms) }</div>
-                <img style={{...svgStyles}} className="card-img-top" src="icons/bathtub.svg" data-holder-rendered="true" />
+                <img style={{...svgStyles}} src="/icons/bathtub.svg" />
                 <div>{ property.details.bathrooms } BATH</div>
               </div>
               <div className="row justify-content-center">
-                <Link to="/unit">
+                <Link to={`/unit/${property.id}`}>
                   <div className="address ellipsis">{property.location.address} {property.location.apartment}, {property.location.state} {property.location.zipcode}</div>
                 </Link>
               </div>

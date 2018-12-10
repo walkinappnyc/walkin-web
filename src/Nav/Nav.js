@@ -34,7 +34,7 @@ class Nav extends Component {
           <div className="navbar fixed-top navbar-light box-shadow">
             <div className="container d-flex justify-content-between">
               <Link to="/">
-                <img className="logo" src="logo.svg" />
+                <img className="logo" src="/logo.svg" />
               </Link>
               <a className="rentalsBtn"
                 onMouseEnter={this.mouseEnter}

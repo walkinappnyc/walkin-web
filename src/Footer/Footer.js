@@ -29,9 +29,9 @@ class Footer extends Component {
             <hr/>
             <div className="row justify-content-center">
               <ul className="footerSocial">
-                <li><a href="https://www.facebook.com/Walkin-492748721245562"><img src="icons/facebook.svg" /></a></li>
-                <li><a href="https://twitter.com/_walkin_app"><img src="icons/twitter.svg" /></a></li>
-                <li><a href="https://www.instagram.com/walk.in_"><img src="icons/instagram.svg" /></a></li>
+                <li><a href="https://www.facebook.com/Walkin-492748721245562"><img src="/icons/facebook.svg" /></a></li>
+                <li><a href="https://twitter.com/_walkin_app"><img src="/icons/twitter.svg" /></a></li>
+                <li><a href="https://www.instagram.com/walk.in_"><img src="/icons/instagram.svg" /></a></li>
               </ul>
             </div>
             <div className="row justify-content-center">
@@ -43,8 +43,5 @@ class Footer extends Component {
     );
   }
 }
-            // <p className="float-right">
-            //   <a href="#">Back to top</a>
-            // </p>
 
 export default Footer;

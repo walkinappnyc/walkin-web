@@ -45,13 +45,27 @@ const paragraphStyles = {
   padding: '20px 100px 30px 20px',
 }
 
+const renderImages = (images) => {
+  return images.map((image => {
+    if (image.type === 'floorplan') return null;
+    return (
+        <img src={image.url} aria={image.description}/>
+    )
+  }))
+}
+
+const renderBedroomText = (rooms) => {
+  if (rooms === '0') return "STUDIO"
+  return `${rooms} BED`
+}
+
 class UnitPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       data: null,
-      property: null
+      property: null,
     };
     this.renderCards = this.renderCards.bind(this);
     this.renderFloorPlan = this.renderFloorPlan.bind(this);
@@ -59,7 +73,12 @@ class UnitPage extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0)
-    fetch(`https://walkin-staging.herokuapp.com/api/properties/`)
+    const  unitID = this.props.match.params.unitID;
+    fetch(`https://walkin-staging.herokuapp.com/api/properties/${unitID}`)
+      .then((resp) => resp.json())
+      .then((data) => { this.setState({ property: data }) })
+
+    fetch('https://walkin-staging.herokuapp.com/api/properties/')
       .then((resp) => resp.json())
       .then((data) => { this.setState({ data }) })
   }
@@ -76,25 +95,25 @@ class UnitPage extends Component {
   }
 
   render() {
+    const { property } =  this.state;
+    if (!property) return null
+    const floorPlan = property.media[property.media.length - 1].type === "floorplan" ? property.media[property.media.length - 1].url : null;
+
     return (
       <div className="unit">
         <div className="container-fluid" style={{ backgroundColor: '#6d5b97', padding: '27px 0', marginBottom: '39px'}}>
-          <div className="heroAddress">20-10 Seagirt Blvd Far Rockaway, NY 11691</div>
+          <div className="heroAddress">{property.location.address} {property.location.apartment}, {property.location.state} {property.location.zipcode}</div>
         </div>
         <div className="container">
           <div className="row">
             <div className="col-md-9">
               <Slider {...settings}>
-                <img src="https://goldfarbproperties.com/uploads/_styles/carousel-slide/building/pts-garden.jpg" />
-                <img src="https://goldfarbproperties.com/uploads/_styles/carousel-slide/building/315-10g-kitchen.JPG" />
-                <img src="https://goldfarbproperties.com/uploads/_styles/carousel-slide/building/315-12h-bathroom-2.jpg" />
-                <img src="https://goldfarbproperties.com/uploads/_styles/carousel-slide/general/pts-gym.jpg" />
-                <img src="https://goldfarbproperties.com/uploads/_styles/carousel-slide/region/columbus-circle.jpg" />
+                { renderImages(property.media) }
               </Slider>
-              {this.renderFloorPlan(true)}
+              {this.renderFloorPlan(floorPlan)}
               <div className="row transit">
                 <DescriptorCard header="DESCRIPTION">
-                  <p style={{ ...paragraphStyles }}>Brand new renovation! Be the first to live in this spacious unit with Stainless Steel Appliances and gorgeous views!</p>
+                  <div style={{ ...paragraphStyles }} dangerouslySetInnerHTML={{ __html: property.details.building.description}} ></div>
                 </DescriptorCard>
                 <FeaturesCard/>
                 <DescriptorCard header="NEIGHBORHOOD">
@@ -123,25 +142,24 @@ class UnitPage extends Component {
                     1 YEAR FREE GYM
                   </div>
                   <div className="col-md-12 price">
-                    $1924
+                    ${property.details.price.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                   </div>
                   <div className="col-md-12 noFee">
                     NO FEE
                   </div>
                   <div className="col-md-12 sidebarSection">
-                    <img className="svgStyles" src="icons/bed.svg" />
-                    <div className="svgStylesText">2 BED</div>
-                    <img className="svgStyles" src="icons/bathtub.svg" />
-                    <div className="svgStylesText">2 BATH</div>
+                    <img className="svgStyles" src="/icons/bed.svg" />
+                    <div className="svgStylesText">{ renderBedroomText(property.details.bedrooms) }</div>
+                    <img className="svgStyles" src="/icons/bathtub.svg" />
+                    <div className="svgStylesText">{property.details.bathrooms} BATH</div>
                   </div>
                   <div className="col-md-12 sidebarSection address">
-                    <img className="svgStyles" src="icons/residential.svg" />
-                    20-10 Seagirt Blvd
-                    Far Rockaway, NY 11691
+                    <img className="svgStyles" src="/icons/residential.svg" />
+                    {property.location.address} {property.location.apartment}, {property.location.state} {property.location.zipcode}
                   </div>
                   <div className="col-md-12 sidebarSection phone">
-                    <img className="svgStyles" src="icons/phone.svg" />
-                    718.471.7800
+                    <img className="svgStyles" src="/icons/phone.svg" />
+                    {property.agents[0].phone_number}
                   </div>
                   <div className="col-md-12 sidebarButtons">
                     <button type="button" className="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#contact">
@@ -157,7 +175,7 @@ class UnitPage extends Component {
                   </div>
                   <div className="col-md-12">
                     <button type="button" className="btn btn-outline-primary btn-block btnMargin">
-                      <img className="logoBtn" src="logo.svg" />
+                      <img className="logoBtn" src="/logo.svg" />
                     </button>
                   </div>
                 </div>
@@ -239,7 +257,7 @@ class UnitPage extends Component {
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <img style={{ margin: '0 auto', width: '100%' }} src="https://goldfarbproperties.com/uploads/_floorplans/the-capri-gcc-16e.jpg" />
+              <img style={{ margin: '0 auto', width: '100%' }} src={floorPlan}/>
             </div>
           </div>
         </div>

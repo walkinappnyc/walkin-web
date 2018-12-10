@@ -16,23 +16,23 @@ class FeaturesCard extends Component {
             <div className="header">Highlights</div>
             <ul>
               <li>
-                <img className="svgStyles" src="icons/gym.svg" />
+                <img className="svgStyles" src="/icons/gym.svg" />
                 <span>Gym</span>
               </li>
               <li>
-                <img className="svgStyles" src="icons/garage.svg" />
+                <img className="svgStyles" src="/icons/garage.svg" />
                 <span>Garage</span>
               </li>
               <li>
-                <img className="svgStyles" src="icons/pool.svg" />
+                <img className="svgStyles" src="/icons/pool.svg" />
                 <span>Pool</span>
               </li>
               <li>
-                <img className="svgStyles" src="icons/washer.svg" />
+                <img className="svgStyles" src="/icons/washer.svg" />
                 <span>Laundry</span>
               </li>
               <li>
-                <img className="svgStyles" src="icons/dog.svg" />
+                <img className="svgStyles" src="/icons/dog.svg" />
                 <span>Pets Allowed</span>
               </li>
             </ul>
