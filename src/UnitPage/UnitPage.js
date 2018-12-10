@@ -3,6 +3,8 @@ import Slider from "react-slick";
 import DescriptorCard from './DescriptorCard';
 import FeaturesCard from './FeaturesCard';
 import LargeCard from '../LargeCard/LargeCard';
+import ContactModal from '../Modals/ContactModal';
+import FloorplanModal from '../Modals/FloorplanModal';
 import './styles.scss'
 
 function SampleNextArrow(props) {
@@ -18,7 +20,6 @@ function SampleNextArrow(props) {
 
 function SamplePrevArrow(props) {
   const { classes, className, style, onClick } = props;
-  console.log(props)
   return (
     <div
       className={`${className} ${classes}`}
@@ -77,7 +78,6 @@ class UnitPage extends Component {
     fetch(`https://walkin-staging.herokuapp.com/api/properties/${unitID}`)
       .then((resp) => resp.json())
       .then((data) => { this.setState({ property: data }) })
-
     fetch('https://walkin-staging.herokuapp.com/api/properties/')
       .then((resp) => resp.json())
       .then((data) => { this.setState({ data }) })
@@ -129,7 +129,13 @@ class UnitPage extends Component {
                   <p style={{ ...paragraphStyles }}>Escape the city and enter serenity with your new home in Wavecrest Gardens. Indulge in luxurious oceanfront Rockaway Beach rentals with easy access to …</p>
                 </DescriptorCard>
                 <DescriptorCard header="MAP OF THE AREA">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3029.559758813644!2d-73.75773928459863!3d40.59547197934468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c268ae46c88df3%3A0x8dfa6ca60a721ff2!2s20-10+Seagirt+Blvd%2C+Far+Rockaway%2C+NY+11691!5e0!3m2!1sen!2sus!4v1542252450050" width="825" height="450" frameborder="0" allowfullscreen></iframe>
+                  <iframe
+                    width="825"
+                    height="450"
+                    frameborder="0"
+                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBJU7UEWwm0D7fUDkN_kDlrACXvqafp_-M
+                      &q=${property.location.address}+${property.location.apartment},+${property.location.state}+${property.location.zipcode}`} allowfullscreen>
+                  </iframe>
                 </DescriptorCard>
               </div>
             </div>
@@ -190,78 +196,8 @@ class UnitPage extends Component {
           </div>
         </div>
 
-        <div className="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <form>
-              <div className="modal-body">
-                <div className="container">
-                <div className="row">
-                    <div className="col-sm-12 col-md-6">
-                      <div className="form-group text-left">
-                        <label for="formGroupExampleInput" className="bmd-label-floating">First Name</label>
-                        <input type="text" className="form-control" id="formGroupExampleInput" />
-                      </div>
-                    </div>
-                    <div className="col-sm-12 col-md-6">
-                      <div className="form-group text-left">
-                        <label for="formGroupExampleInput2" className="bmd-label-floating">Last Name</label>
-                        <input type="text" className="form-control" id="formGroupExampleInput2" />
-                      </div>
-                    </div>
-                    <div className="col-sm-12 col-md-6">
-                      <div className="form-group text-left">
-                        <label for="formGroupExampleInput2" className="bmd-label-floating">E-mail</label>
-                        <input type="email" className="form-control" id="formGroupExampleInput2" />
-                        <span className="bmd-help">Well never share your email with anyone else.</span>
-                      </div>
-                    </div>
-                    <div className="col-sm-12 col-md-6">
-                      <div className="form-group text-left">
-                        <label for="formGroupExampleInput2" className="bmd-label-floating">Phone Number</label>
-                        <input type="text" className="form-control" id="formGroupExampleInput2" />
-                        <span className="bmd-help">Please dont add any special characters (-.*)</span>
-                      </div>
-                    </div>
-                    <div className="col-sm-12 col-md-12">
-                      <div className="form-group text-left">
-                        <label for="formGroupExampleInput2" className="bmd-label-floating">Add your message here</label>
-                        <textarea className="form-control" id="formGroupExampleInput2" rows="3"></textarea>
-                      </div>
-                    </div>
-                </div>
-                </div>
-              </div>
-              <div className="modal-footer">
-                <div className="col-sm-12 col-md-12">
-                    <span className="form-group">
-                      <button type="submit" className="btn btn-outline-primary">Send Message</button>
-                    </span>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        <div className="modal fade" id="floorPlan" tabindex="-1" role="dialog" >
-          <div className="modal-dialog modal-lg" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <img style={{ margin: '0 auto', width: '100%' }} src={floorPlan}/>
-            </div>
-          </div>
-        </div>
-
+        <ContactModal />
+        <FloorplanModal floorPlan={floorPlan} />
       </div>
     );
   }
