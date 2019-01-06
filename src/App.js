@@ -22,6 +22,7 @@ class App extends Component {
             <Route path="/unit/:unitID" component={UnitPage} />
             <Route path="/youshallnotpass4876" component={ActivationPage} />
           </div>
+          <Footer />
         </div>
       </Router>
     );

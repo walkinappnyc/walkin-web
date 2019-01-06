@@ -15,7 +15,10 @@ class Homepage extends Component {
     fetch('https://walkin-staging.herokuapp.com/api/properties')
       .then(resp => resp.json())
       .then(data => {
-        this.setState({ data });
+        const activeData = data.filter(
+          property => property.isActive && property.isFeatured
+        );
+        this.setState({ data: activeData });
       });
   }
 
