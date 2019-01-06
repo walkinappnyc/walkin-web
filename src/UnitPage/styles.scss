@@ -65,7 +65,7 @@
     margin-right: 10px;
   }
 
-  .amenitie {
+  .amentity {
     color: #d0021b;
     font-size: 12px;
   }
@@ -97,13 +97,48 @@
   .logoBtn {
     width: 80px;
   }
+
+  .posSide & {
+    display: none;
+    @media (min-width: 1200px) {
+      display: block;
+    }
+  }
+
+  .posInline & {
+    display: block;
+    height: auto;
+    margin-bottom: 24px;
+    @media (min-width: 1200px) {
+      display: none;
+    }
+  }
 }
 
 .unit {
+  h1 {
+    font-size: 20px;
+    @media (min-width: 576px) {
+      font-size: 30px;
+    }
+  }
+
   .heroAddress {
     font-family: 'roboto-light';
     color: #fff;
-    font-size: 30px;
+    font-size: 20px;
+    @media (min-width: 576px) {
+      font-size: 30px;
+    }
+
+    // // Medium devices (tablets, 768px and up)
+    // @media (min-width: 768px) { ... }
+
+    // // Large devices (desktops, 992px and up)
+    // @media (min-width: 992px) { ... }
+
+    // // Extra large devices (large desktops, 1200px and up)
+    // @media (min-width: 1200px) { ... }
   }
 
   .similarHeader {

@@ -5,6 +5,8 @@ import FeaturesCard from './FeaturesCard';
 import LargeCard from '../LargeCard/LargeCard';
 import ContactModal from '../Modals/ContactModal';
 import FloorplanModal from '../Modals/FloorplanModal';
+import StickySide from './StickySide';
+
 import './styles.scss';
 
 function SampleNextArrow(props) {
@@ -53,11 +55,6 @@ const renderImages = images => {
   });
 };
 
-const renderBedroomText = rooms => {
-  if (rooms === '0') return 'STUDIO';
-  return `${rooms} BED`;
-};
-
 class UnitPage extends Component {
   constructor(props) {
     super(props);
@@ -68,6 +65,7 @@ class UnitPage extends Component {
     };
     this.renderCards = this.renderCards.bind(this);
     this.renderFloorPlan = this.renderFloorPlan.bind(this);
+    this.renderTransportation = this.renderTransportation.bind(this);
   }
 
   componentDidMount() {
@@ -76,7 +74,6 @@ class UnitPage extends Component {
     fetch(`https://walkin-staging.herokuapp.com/api/properties/${unitID}`)
       .then(resp => resp.json())
       .then(data => {
-        debugger;
         this.setState({ property: data });
       });
     fetch('https://walkin-staging.herokuapp.com/api/properties/')
@@ -105,6 +102,15 @@ class UnitPage extends Component {
     );
   }
 
+  renderTransportation(train) {
+    return (
+      <div>
+        <span className={`subway s${train.name}`}>{train.name}</span> at{' '}
+        {train.description} - {train.distance}
+      </div>
+    );
+  }
+
   render() {
     const { property } = this.state;
     if (!property) return null;
@@ -130,10 +136,13 @@ class UnitPage extends Component {
         </div>
         <div className="container">
           <div className="row">
-            <div className="col-md-9">
+            <div className="col-xl-9 col-lg-12">
               <Slider {...settings}>{renderImages(property.media)}</Slider>
               {this.renderFloorPlan(floorPlan)}
               <div className="row transit">
+                <div className="col-lg-12 posInline">
+                  <StickySide property={property} />
+                </div>
                 <DescriptorCard header="DESCRIPTION">
                   <div
                     style={{ ...paragraphStyles }}
@@ -157,40 +166,31 @@ class UnitPage extends Component {
                 </DescriptorCard>
                 <DescriptorCard header="TRANSPORTATION">
                   <p style={{ ...paragraphStyles }}>
-                    <span className="subway s1">1</span>
-                    <span className="subway s2">2</span>
-                    <span className="subway s3">3</span>
-                    <span className="subway s4">4</span>
-                    <span className="subway s5">5</span>
-                    <span className="subway s6">6</span>
-                    <span className="subway s7">7</span>
-                    <span className="subway sA">A</span>
-                    <span className="subway sC">C</span>
-                    <span className="subway sE">E</span>
-                    <span className="subway sB">B</span>
-                    <span className="subway sD">D</span>
-                    <span className="subway sF">F</span>
-                    <span className="subway sM">M</span>
-                    <span className="subway sG">G</span>
-                    <span className="subway sJ">J</span>
-                    <span className="subway sZ">Z</span>
-                    <span className="subway sL">L</span>
-                    <span className="subway sS">S</span>
-                    <span className="subway sN">N</span>
-                    <span className="subway sQ">Q</span>
-                    <span className="subway sR">R</span>
-                    <span className="subway sW">W</span>
-                    The Grand Concourse, referred to as the “Park Avenue of the
-                    Bronx”, is lined with architecturally-significant buildings,
-                    many of which have been converted into exclusive
-                    condominiums and co-ops. The concourse is lined with iconic
-                    attractions including Yankee Stadium and the beautiful Bronx
-                    Museum of the Arts. The Grand Concourse, with its easy
-                    access to Manhattan, is inspiring a new wave of
-                    professionals and inviting those who want to live in luxury
-                    and reside only 20 minutes from Manhattan. The area is
-                    continuously growing and attracting diverse residents and
-                    businesses.
+                    {this.renderTransportation({
+                      name: '1',
+                      description: 'at Beach 25th Street',
+                      distance: 'Wavecrest 0.47 miles'
+                    })}
+                    {this.renderTransportation({
+                      name: 'W',
+                      description: 'at Beach 25th Street',
+                      distance: 'Wavecrest 0.47 miles'
+                    })}
+                    {this.renderTransportation({
+                      name: 'G',
+                      description: 'at Beach 25th Street',
+                      distance: 'Wavecrest 0.47 miles'
+                    })}
+                    {this.renderTransportation({
+                      name: '4',
+                      description: 'at Beach 25th Street',
+                      distance: 'Wavecrest 0.47 miles'
+                    })}
+                    {this.renderTransportation({
+                      name: 'J',
+                      description: 'at Beach 25th Street',
+                      distance: 'Wavecrest 0.47 miles'
+                    })}
                   </p>
                 </DescriptorCard>
                 <DescriptorCard header="BUILDING">
@@ -202,6 +202,7 @@ class UnitPage extends Component {
                 </DescriptorCard>
                 <DescriptorCard header="MAP OF THE AREA">
                   <iframe
+                    title="map"
                     width="825"
                     height="450"
                     frameborder="0"
@@ -215,67 +216,8 @@ class UnitPage extends Component {
               </div>
             </div>
 
-            <div className="col-md-3 stickySidebar">
-              <div className="container card mb-5 box-shadow wrapper">
-                <div className="row">
-                  <div className="col-md-12 amenitie">1 YEAR FREE GYM</div>
-                  <div className="col-md-12 price">
-                    $
-                    {property.details.price.replace(
-                      /\B(?=(\d{3})+(?!\d))/g,
-                      ','
-                    )}
-                  </div>
-                  <div className="col-md-12 noFee">NO FEE</div>
-                  <div className="col-md-12 sidebarSection">
-                    <img className="svgStyles" src="/icons/bed.svg" />
-                    <div className="svgStylesText">
-                      {renderBedroomText(property.details.bedrooms)}
-                    </div>
-                    <img className="svgStyles" src="/icons/bathtub.svg" />
-                    <div className="svgStylesText">
-                      {property.details.bathrooms} BATH
-                    </div>
-                  </div>
-                  <div className="col-md-12 sidebarSection address">
-                    <img className="svgStyles" src="/icons/residential.svg" />
-                    {property.location.address} {property.location.apartment},{' '}
-                    {property.location.state} {property.location.zipcode}
-                  </div>
-                  <div className="col-md-12 sidebarSection phone">
-                    <img className="svgStyles" src="/icons/phone.svg" />
-                    {property.agents[0].phone_number}
-                  </div>
-                  <div className="col-md-12 sidebarButtons">
-                    <button
-                      type="button"
-                      className="btn btn-outline-primary btn-block"
-                      data-toggle="modal"
-                      data-target="#contact"
-                    >
-                      CONTACT
-                    </button>
-                  </div>
-                  <div className="col-md-12">
-                    <button
-                      type="button"
-                      className="btn btn-outline-primary btn-block btnMargin"
-                    >
-                      <a href="https://goldfarbproperties.securecafe.com/onlineleasing/920-riverside-drive/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=218694&FloorPlanID=2043050&UnitID=3399531&header=1">
-                        APPLY NOW
-                      </a>
-                    </button>
-                  </div>
-                  <div className="col-md-12">
-                    <button
-                      type="button"
-                      className="btn btn-outline-primary btn-block btnMargin"
-                    >
-                      <img className="logoBtn" src="/logo.svg" />
-                    </button>
-                  </div>
-                </div>
-              </div>
+            <div className="col-xl-3 posSide">
+              <StickySide property={property} />
             </div>
           </div>
 
