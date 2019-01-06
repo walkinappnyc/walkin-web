@@ -1,4 +1,5 @@
 .largeCard {
+  max-width: 380px;
 
   .pill {
     -webkit-font-smoothing: antialiased;
@@ -52,7 +53,6 @@
       right: 0px;
       z-index: 1;
       width: 45px;
-
 
       &:before {
         content: '';
