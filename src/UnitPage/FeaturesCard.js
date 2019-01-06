@@ -1,38 +1,38 @@
 import React, { Component } from 'react';
-import './featurecard.scss'
+import './featurecard.scss';
 
 const cardStyles = {
   borderRadius: 0,
-  borderTop: '4px solid #6d5b97',
-}
+  borderTop: '4px solid #6d5b97'
+};
 
 class FeaturesCard extends Component {
   render() {
     return (
       <div className="col-md-12 text-left featureCard">
         <h1>AMENITIES & FEATURES</h1>
-        <div className="card mb-4 box-shadow" style={{...cardStyles}}>
+        <div className="card mb-4 box-shadow" style={{ ...cardStyles }}>
           <div className="featuredAmentites">
             <div className="header">Highlights</div>
             <ul>
               <li>
-                <img className="svgStyles" src="/icons/gym.svg" />
+                <img className="svgStyles" src="/icons/gym.svg" alt="" />
                 <span>Gym</span>
               </li>
               <li>
-                <img className="svgStyles" src="/icons/garage.svg" />
+                <img className="svgStyles" src="/icons/garage.svg" alt="" />
                 <span>Garage</span>
               </li>
               <li>
-                <img className="svgStyles" src="/icons/pool.svg" />
+                <img className="svgStyles" src="/icons/pool.svg" alt="" />
                 <span>Pool</span>
               </li>
               <li>
-                <img className="svgStyles" src="/icons/washer.svg" />
+                <img className="svgStyles" src="/icons/washer.svg" alt="" />
                 <span>Laundry</span>
               </li>
               <li>
-                <img className="svgStyles" src="/icons/dog.svg" />
+                <img className="svgStyles" src="/icons/dog.svg" alt="" />
                 <span>Pets Allowed</span>
               </li>
             </ul>

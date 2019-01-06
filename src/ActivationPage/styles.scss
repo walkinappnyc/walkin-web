@@ -1,0 +1,216 @@
+.about {
+  .heroAddress {
+    color: #fff;
+    font-size: 52px;
+  }
+}
+
+.switch label {
+  position: relative;
+  padding-left: 2.4375rem;
+}
+.switch label .bmd-switch-track {
+  position: absolute;
+  top: 0.3125rem;
+  left: 0;
+  display: inline-block;
+  width: 2.125rem;
+  height: 0.875rem;
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.26) 0%,
+    rgba(0, 0, 0, 0.26) 50%,
+    #49dcce 50%,
+    #49dcce 100%
+  );
+  background-position: 0%;
+  background-size: 4.25rem 0.875rem;
+  border-radius: 2.125rem;
+  transition: background-position 0.2s ease-in;
+}
+.switch label .bmd-switch-track::after {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  align-self: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  content: '';
+  background: #f1f1f1;
+  border-radius: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  transition: left 0.2s ease-in, background-color 0.2s ease-in,
+    transform 0.3s ease;
+  transform: translateY(-50%);
+}
+.switch label .bmd-switch-track:active::after {
+  transform: translateY(-50%) scale3d(1.15, 0.85, 1);
+}
+.switch label input {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+.switch label input:checked + .bmd-switch-track {
+  background-position: -100%;
+}
+.switch label input:checked + .bmd-switch-track::after {
+  left: calc(100% - 1.25rem);
+  background-color: #009688;
+}
+.switch label input:disabled + .bmd-switch-track:active::after {
+  transform: translateY(-50%);
+}
+.switch label input:disabled + .bmd-switch-track {
+  cursor: default;
+  background: rgba(0, 0, 0, 0.12);
+}
+.switch label input:disabled + .bmd-switch-track::after {
+  background: #bdbdbd;
+}
+
+.radio label,
+.is-focused .radio label,
+.radio-inline,
+.is-focused .radio-inline,
+.checkbox label,
+.is-focused .checkbox label,
+.checkbox-inline,
+.is-focused .checkbox-inline,
+.switch label,
+.is-focused .switch label {
+  color: rgba(0, 0, 0, 0.26);
+}
+.radio label:hover,
+.radio label:focus,
+.radio label:active,
+.is-focused .radio label:hover,
+.is-focused .radio label:focus,
+.is-focused .radio label:active,
+.radio-inline:hover,
+.radio-inline:focus,
+.radio-inline:active,
+.is-focused .radio-inline:hover,
+.is-focused .radio-inline:focus,
+.is-focused .radio-inline:active,
+.checkbox label:hover,
+.checkbox label:focus,
+.checkbox label:active,
+.is-focused .checkbox label:hover,
+.is-focused .checkbox label:focus,
+.is-focused .checkbox label:active,
+.checkbox-inline:hover,
+.checkbox-inline:focus,
+.checkbox-inline:active,
+.is-focused .checkbox-inline:hover,
+.is-focused .checkbox-inline:focus,
+.is-focused .checkbox-inline:active,
+.switch label:hover,
+.switch label:focus,
+.switch label:active,
+.is-focused .switch label:hover,
+.is-focused .switch label:focus,
+.is-focused .switch label:active {
+  color: rgba(0, 0, 0, 0.54);
+}
+.radio label label:has(input[type='radio'][disabled]),
+.radio label label:has(input[type='radio'][disabled]):hover,
+.radio label label:has(input[type='radio'][disabled]):focus,
+.radio label label:has(input[type='checkbox'][disabled]),
+.radio label label:has(input[type='checkbox'][disabled]):hover,
+.radio label label:has(input[type='checkbox'][disabled]):focus,
+fieldset[disabled] .radio label,
+fieldset[disabled] .radio label:hover,
+fieldset[disabled] .radio label:focus,
+.is-focused .radio label label:has(input[type='radio'][disabled]),
+.is-focused .radio label label:has(input[type='radio'][disabled]):hover,
+.is-focused .radio label label:has(input[type='radio'][disabled]):focus,
+.is-focused .radio label label:has(input[type='checkbox'][disabled]),
+.is-focused .radio label label:has(input[type='checkbox'][disabled]):hover,
+.is-focused .radio label label:has(input[type='checkbox'][disabled]):focus,
+fieldset[disabled] .is-focused .radio label,
+fieldset[disabled] .is-focused .radio label:hover,
+fieldset[disabled] .is-focused .radio label:focus,
+.radio-inline label:has(input[type='radio'][disabled]),
+.radio-inline label:has(input[type='radio'][disabled]):hover,
+.radio-inline label:has(input[type='radio'][disabled]):focus,
+.radio-inline label:has(input[type='checkbox'][disabled]),
+.radio-inline label:has(input[type='checkbox'][disabled]):hover,
+.radio-inline label:has(input[type='checkbox'][disabled]):focus,
+fieldset[disabled] .radio-inline,
+fieldset[disabled] .radio-inline:hover,
+fieldset[disabled] .radio-inline:focus,
+.is-focused .radio-inline label:has(input[type='radio'][disabled]),
+.is-focused .radio-inline label:has(input[type='radio'][disabled]):hover,
+.is-focused .radio-inline label:has(input[type='radio'][disabled]):focus,
+.is-focused .radio-inline label:has(input[type='checkbox'][disabled]),
+.is-focused .radio-inline label:has(input[type='checkbox'][disabled]):hover,
+.is-focused .radio-inline label:has(input[type='checkbox'][disabled]):focus,
+fieldset[disabled] .is-focused .radio-inline,
+fieldset[disabled] .is-focused .radio-inline:hover,
+fieldset[disabled] .is-focused .radio-inline:focus,
+.checkbox label label:has(input[type='radio'][disabled]),
+.checkbox label label:has(input[type='radio'][disabled]):hover,
+.checkbox label label:has(input[type='radio'][disabled]):focus,
+.checkbox label label:has(input[type='checkbox'][disabled]),
+.checkbox label label:has(input[type='checkbox'][disabled]):hover,
+.checkbox label label:has(input[type='checkbox'][disabled]):focus,
+fieldset[disabled] .checkbox label,
+fieldset[disabled] .checkbox label:hover,
+fieldset[disabled] .checkbox label:focus,
+.is-focused .checkbox label label:has(input[type='radio'][disabled]),
+.is-focused .checkbox label label:has(input[type='radio'][disabled]):hover,
+.is-focused .checkbox label label:has(input[type='radio'][disabled]):focus,
+.is-focused .checkbox label label:has(input[type='checkbox'][disabled]),
+.is-focused .checkbox label label:has(input[type='checkbox'][disabled]):hover,
+.is-focused .checkbox label label:has(input[type='checkbox'][disabled]):focus,
+fieldset[disabled] .is-focused .checkbox label,
+fieldset[disabled] .is-focused .checkbox label:hover,
+fieldset[disabled] .is-focused .checkbox label:focus,
+.checkbox-inline label:has(input[type='radio'][disabled]),
+.checkbox-inline label:has(input[type='radio'][disabled]):hover,
+.checkbox-inline label:has(input[type='radio'][disabled]):focus,
+.checkbox-inline label:has(input[type='checkbox'][disabled]),
+.checkbox-inline label:has(input[type='checkbox'][disabled]):hover,
+.checkbox-inline label:has(input[type='checkbox'][disabled]):focus,
+fieldset[disabled] .checkbox-inline,
+fieldset[disabled] .checkbox-inline:hover,
+fieldset[disabled] .checkbox-inline:focus,
+.is-focused .checkbox-inline label:has(input[type='radio'][disabled]),
+.is-focused .checkbox-inline label:has(input[type='radio'][disabled]):hover,
+.is-focused .checkbox-inline label:has(input[type='radio'][disabled]):focus,
+.is-focused .checkbox-inline label:has(input[type='checkbox'][disabled]),
+.is-focused .checkbox-inline label:has(input[type='checkbox'][disabled]):hover,
+.is-focused .checkbox-inline label:has(input[type='checkbox'][disabled]):focus,
+fieldset[disabled] .is-focused .checkbox-inline,
+fieldset[disabled] .is-focused .checkbox-inline:hover,
+fieldset[disabled] .is-focused .checkbox-inline:focus,
+.switch label label:has(input[type='radio'][disabled]),
+.switch label label:has(input[type='radio'][disabled]):hover,
+.switch label label:has(input[type='radio'][disabled]):focus,
+.switch label label:has(input[type='checkbox'][disabled]),
+.switch label label:has(input[type='checkbox'][disabled]):hover,
+.switch label label:has(input[type='checkbox'][disabled]):focus,
+fieldset[disabled] .switch label,
+fieldset[disabled] .switch label:hover,
+fieldset[disabled] .switch label:focus,
+.is-focused .switch label label:has(input[type='radio'][disabled]),
+.is-focused .switch label label:has(input[type='radio'][disabled]):hover,
+.is-focused .switch label label:has(input[type='radio'][disabled]):focus,
+.is-focused .switch label label:has(input[type='checkbox'][disabled]),
+.is-focused .switch label label:has(input[type='checkbox'][disabled]):hover,
+.is-focused .switch label label:has(input[type='checkbox'][disabled]):focus,
+fieldset[disabled] .is-focused .switch label,
+fieldset[disabled] .is-focused .switch label:hover,
+fieldset[disabled] .is-focused .switch label:focus {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+[class^='bmd-label'],
+[class*=' bmd-label'] {
+  color: rgba(0, 0, 0, 0.26);
+}

@@ -1,5 +1,4 @@
 .featureCard {
-
   ul {
     list-style: none;
     padding: 0;
@@ -37,15 +36,13 @@
       width: 35px;
       height: 30px;
       margin-right: 5px;
-      font-smoothing: antialiased;
+      -webkit-font-smoothing: antialiased;
     }
-
   }
 
   .unitFeatureWrapper {
     float: left;
     width: 50%;
-
   }
 
   .buildingFreatureWrapper {

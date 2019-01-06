@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import AboutPage from './AboutPage/AboutPage';
+import ActivationPage from './ActivationPage/ActivationPage';
 import Footer from './Footer/Footer';
 import Homepage from './Homepage/Homepage';
 import Nav from './Nav/Nav';
@@ -14,14 +14,14 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Nav/>
+          <Nav />
           <div style={{ marginTop: '64px' }}>
             <Route path="/" exact component={Homepage} />
             <Route path="/about" component={AboutPage} />
             <Route path="/region" component={RegionPage} />
             <Route path="/unit/:unitID" component={UnitPage} />
+            <Route path="/youshallnotpass4876" component={ActivationPage} />
           </div>
-          <Footer/>
         </div>
       </Router>
     );

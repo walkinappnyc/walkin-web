@@ -55,14 +55,12 @@
   }
 
   .svgStyles {
-    display: inline-block;
     float: left;
     width: 22px;
     margin: 0 5px 0 0;
   }
 
   .svgStylesText {
-    display: inline-block;
     float: left;
     margin-right: 10px;
   }
@@ -88,13 +86,8 @@
     font-size: 16px;
   }
 
-  .phone {
-
-  }
-
   .sidebarButtons {
     margin-top: 30px;
-
   }
 
   .btnMargin {
@@ -107,7 +100,6 @@
 }
 
 .unit {
-
   .heroAddress {
     font-family: 'roboto-light';
     color: #fff;
@@ -115,7 +107,7 @@
   }
 
   .similarHeader {
-    color: #332A48;
+    color: #332a48;
     font-family: 'roboto-light';
     font-size: 32px;
     margin-top: 40px;
@@ -134,7 +126,7 @@
     }
   }
 
-  .floorPlanPill{
+  .floorPlanPill {
     -webkit-font-smoothing: antialiased;
     background-color: #fff;
     border-radius: 30px;
@@ -155,7 +147,6 @@
   .unitFeatureWrapper {
     float: left;
     width: 50%;
-
   }
 
   .buildingFreatureWrapper {
@@ -173,15 +164,58 @@
       text-align: center;
       width: 28px;
     }
-    .s1, .s2, .s3 { background-color: #ed462f; color: #fff; }
-    .s4, .s5, .s6 { background-color: #45943d; color: #fff; }
-    .s7 { background-color: #ba47ad; color: #fff; }
-    .sA, .sC, .sE { background-color: #2850ad; color: #fff; }
-    .sB, .sD, .sF, .sM { background-color: #ef6230; color: #fff; }
-    .sG { background-color: #6cbe45; color: #fff; }
-    .sJ, .sZ { background-color: #996633; color: #fff; }
-    .sL { background-color: #a7a9ac; color: #fff; }
-    .sS { background-color: #808183; color: #fff; }
-    .sN, .sQ, .sR, .sW { background-color: #fbcc33; color: #000; }
+    .s1,
+    .s2,
+    .s3 {
+      background-color: #ed462f;
+      color: #fff;
+    }
+    .s4,
+    .s5,
+    .s6 {
+      background-color: #45943d;
+      color: #fff;
+    }
+    .s7 {
+      background-color: #ba47ad;
+      color: #fff;
+    }
+    .sA,
+    .sC,
+    .sE {
+      background-color: #2850ad;
+      color: #fff;
+    }
+    .sB,
+    .sD,
+    .sF,
+    .sM {
+      background-color: #ef6230;
+      color: #fff;
+    }
+    .sG {
+      background-color: #6cbe45;
+      color: #fff;
+    }
+    .sJ,
+    .sZ {
+      background-color: #996633;
+      color: #fff;
+    }
+    .sL {
+      background-color: #a7a9ac;
+      color: #fff;
+    }
+    .sS {
+      background-color: #808183;
+      color: #fff;
+    }
+    .sN,
+    .sQ,
+    .sR,
+    .sW {
+      background-color: #fbcc33;
+      color: #000;
+    }
   }
 }
