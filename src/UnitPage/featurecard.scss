@@ -9,13 +9,18 @@
     width: 100%;
     font-size: 18px;
     font-family: 'roboto-light';
-    padding: 20px 100px 30px 20px;
+    padding: 20px;
+    @media (min-width: 1200px) {
+      padding: 20px 100px 30px 20px;
+    }
   }
 
   .header {
-    color: #332a48;
-    font-family: 'roboto-bold';
-    font-size: 18px;
+    color: #71589b;
+    font-family: 'roboto-medium';
+    font-size: 22px;
+    font-weight: 600;
+    padding-bottom: 10px;
   }
 
   .featuredAmentites {
@@ -25,7 +30,7 @@
       li {
         float: left;
         margin-right: 20px;
-
+        margin-bottom: 10px;
         span {
           vertical-align: text-top;
         }
@@ -43,10 +48,18 @@
   .unitFeatureWrapper {
     float: left;
     width: 50%;
+    ul li {
+      float: none;
+      margin-bottom: 0;
+    }
   }
 
   .buildingFreatureWrapper {
     float: right;
     width: 50%;
+    ul li {
+      float: none;
+      margin-bottom: 0;
+    }
   }
 }

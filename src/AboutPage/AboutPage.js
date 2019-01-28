@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import LargeCard from '../LargeCard/LargeCard';
+import { triggerPageViewEvent } from '../analytics';
 import './styles.scss';
 
 class AboutPage extends Component {
+  componentDidMount() {
+    triggerPageViewEvent();
+  }
+
   render() {
     return (
       <div className="about">

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import RecircCard from '../RecircCard/RecircCard';
+import { triggerPageViewEvent } from '../analytics';
 import './styles.scss';
 
 class Nav extends Component {

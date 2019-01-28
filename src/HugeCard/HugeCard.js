@@ -67,7 +67,7 @@ const renderImages = (images, id) => {
       <a key={id} href={`/unit/${id}`}>
         <img
           alt={image.description}
-          style={{ height: '210px' }}
+          style={{ height: '324px' }}
           src={image.url}
         />
       </a>
@@ -75,11 +75,11 @@ const renderImages = (images, id) => {
   });
 };
 
-class LargeCard extends Component {
+class HugeCard extends Component {
   render() {
     const { property } = this.props;
     return (
-      <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 largeCard">
+      <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 hugeCard">
         {renderPill(property.location.neighborhood)}
         <div className="card mb-4 box-shadow">
           <Slider {...settings}>
@@ -115,4 +115,4 @@ class LargeCard extends Component {
   }
 }
 
-export default LargeCard;
+export default HugeCard;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Checkbox from './Checkbox';
+import { triggerPageViewEvent } from '../analytics';
 import './styles.scss';
 
 class ActivationPage extends Component {
@@ -19,6 +20,7 @@ class ActivationPage extends Component {
       .then(data => {
         this.setState({ data });
       });
+    triggerPageViewEvent();
   }
 
   renderSwitch(type, isChecked, id, company) {

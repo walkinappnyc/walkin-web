@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
+import { initAnalytics } from './analytics';
 import AboutPage from './AboutPage/AboutPage';
 import ActivationPage from './ActivationPage/ActivationPage';
 import Footer from './Footer/Footer';
@@ -10,6 +11,10 @@ import RegionPage from './RegionPage/RegionPage';
 import UnitPage from './UnitPage/UnitPage';
 
 class App extends Component {
+  componentDidMount() {
+    initAnalytics();
+  }
+
   render() {
     return (
       <Router>

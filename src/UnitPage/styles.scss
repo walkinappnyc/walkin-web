@@ -140,7 +140,14 @@
     // // Extra large devices (large desktops, 1200px and up)
     // @media (min-width: 1200px) { ... }
   }
-
+  .paragraphStyles {
+    font-size: 18px;
+    font-family: 'roboto-light';
+    padding: 20px;
+    @media (min-width: 1200px) {
+      padding: 20px 100px 30px 20px;
+    }
+  }
   .similarHeader {
     color: #332a48;
     font-family: 'roboto-light';
@@ -166,6 +173,7 @@
     background-color: #fff;
     border-radius: 30px;
     bottom: 60px;
+    box-shadow: 3px 3px 2px #808080;
     color: #000;
     cursor: pointer;
     display: block;
@@ -174,8 +182,8 @@
     left: 31px;
     padding: 1px 12px;
     position: relative;
+    top: -10px;
     width: 100px;
-    box-shadow: 3px 3px 2px #808080;
     z-index: 1;
   }
 
@@ -194,8 +202,8 @@
       border-radius: 30px;
       display: inline-block;
       font-weight: bold;
-      height: 28px;
-      margin: 5px;
+      height: 27px;
+      margin: 5px 1px;
       text-align: center;
       width: 28px;
     }
@@ -253,4 +261,17 @@
       color: #000;
     }
   }
+}
+.google-maps {
+  position: relative;
+  padding-bottom: 75%; // This is the aspect ratio
+  height: 0;
+  overflow: hidden;
+}
+.google-maps iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
 }

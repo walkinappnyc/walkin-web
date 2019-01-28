@@ -1,4 +1,5 @@
 import React from 'react';
+import { triggerPageViewEvent } from '../analytics';
 import './styles.scss';
 
 const renderBedroomText = rooms => {
@@ -11,11 +12,17 @@ const StickySide = ({ property }) => {
     <div className="stickySidebar">
       <div className={`container card mb-5 box-shadow wrapper`}>
         <div className="row">
-          <div className="col-md-12 amentity">1 YEAR FREE GYM</div>
+          {property.incentives && property.incentives.name ? (
+            <div className="col-md-12 amentity">
+              {property.incentives.name.toUpperCase()}
+            </div>
+          ) : null}
           <div className="col-md-12 price">
             ${property.details.price.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
           </div>
-          <div className="col-md-12 noFee">NO FEE</div>
+          {property.details.no_fee ? (
+            <div className="col-md-12 noFee">NO FEE</div>
+          ) : null}
           <div className="col-md-12 sidebarSection">
             <img className="svgStyles" src="/icons/bed.svg" alt="" />
             <div className="svgStylesText">

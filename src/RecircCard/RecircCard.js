@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { triggerPageViewEvent } from '../analytics';
 import './styles.scss';
 
 class RecircCard extends Component {
@@ -8,6 +9,7 @@ class RecircCard extends Component {
         <div className="row no-gutters">
           <div className="col-xs-4">
             <img
+              alt=""
               className="card-img-top"
               src="/images/3.jpg"
               style={{ width: '127px' }}
@@ -30,9 +32,9 @@ class RecircCard extends Component {
                 <span className="card-text price">$6,410</span>
               </div>
               <div className="row">
-                <img className="svgStyle" src="/icons/bed.svg" />
+                <img alt="" className="svgStyle" src="/icons/bed.svg" />
                 <div>2 | {'  '}</div>
-                <img className="svgStyle" src="/icons/bathtub.svg" />
+                <img alt="" className="svgStyle" src="/icons/bathtub.svg" />
                 <div>2</div>
               </div>
             </div>
