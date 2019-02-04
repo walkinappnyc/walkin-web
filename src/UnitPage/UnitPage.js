@@ -7,7 +7,6 @@ import ContactModal from '../Modals/ContactModal';
 import FloorplanModal from '../Modals/FloorplanModal';
 import StickySide from './StickySide';
 
-import { mergeTransportationData } from './helpers';
 import { triggerPageViewEvent } from '../analytics';
 import './styles.scss';
 
@@ -101,7 +100,7 @@ class UnitPage extends Component {
 
   renderTransportation(trains) {
     if (!trains || trains.length === 0) return null;
-    const renderTrains = mergeTransportationData(trains).map(train => {
+    const renderTrains = trains.map(train => {
       const lines = train.line.map(line => (
         <span className={`subway s${line}`}>{line}</span>
       ));

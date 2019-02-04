@@ -72,14 +72,18 @@ class FeaturesCard extends Component {
         <div className="card mb-4 box-shadow" style={{ ...cardStyles }}>
           <div className="featuredAmentites">
             {this.renderHighlights()}
-            <div className="unitFeatureWrapper">
-              <div className="header">Unit</div>
-              {this.renderAmentityListItems(unitFeatures)}
-            </div>
-            <div className="buildingFreatureWrapper">
-              <div className="header">Building</div>
-              {this.renderAmentityListItems(buildingFeatures)}
-            </div>
+            {unitFeatures ? (
+              <div className="unitFeatureWrapper">
+                <div className="header">Unit</div>
+                {this.renderAmentityListItems(unitFeatures)}
+              </div>
+            ) : null}
+            {buildingFeatures ? (
+              <div className="buildingFreatureWrapper">
+                <div className="header">Building</div>
+                {this.renderAmentityListItems(buildingFeatures)}
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

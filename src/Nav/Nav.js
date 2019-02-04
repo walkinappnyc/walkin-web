@@ -52,22 +52,24 @@ class Nav extends Component {
                             <ul>
                               <li className="menuHeader">BOROUGHS</li>
                               <li>
-                                <a href="/region">Manhattan</a>
+                                <a href="/borough/manhattan">Manhattan</a>
                               </li>
                               <li>
-                                <a href="/region">Brooklyn</a>
+                                <a href="/borough/brooklyn">Brooklyn</a>
                               </li>
                               <li>
-                                <a href="/region">Queens</a>
+                                <a href="/borough/queens">Queens</a>
                               </li>
                               <li>
-                                <a href="/region">Bronx</a>
+                                <a href="/borough/bronx">Bronx</a>
                               </li>
                               <li>
-                                <a href="/region">Staten Island</a>
+                                <a href="/borough/staten-island">
+                                  Staten Island
+                                </a>
                               </li>
                               <li>
-                                <a href="/region">All NYC</a>
+                                <a href="/all">All NYC</a>
                               </li>
                             </ul>
                           </div>
@@ -77,33 +79,43 @@ class Nav extends Component {
                               <div className="row">
                                 <div className="col-md-6">
                                   <li>
-                                    <a href="/region">Tribeca</a>
+                                    <a href="/neighborhood/tribeca">Tribeca</a>
                                   </li>
                                   <li>
-                                    <a href="/region">Upper East Side</a>
+                                    <a href="/neighborhood/upper-east-side">
+                                      Upper East Side
+                                    </a>
                                   </li>
                                   <li>
-                                    <a href="/region">Upper West Side</a>
+                                    <a href="/neighborhood/upper-west-side">
+                                      Upper West Side
+                                    </a>
                                   </li>
                                   <li>
-                                    <a href="/region">Midtown</a>
+                                    <a href="/neighborhood/midtown">Midtown</a>
                                   </li>
                                   <li>
-                                    <a href="/region">West Village</a>
+                                    <a href="/neighborhood/west-village">
+                                      West Village
+                                    </a>
                                   </li>
                                 </div>
                                 <div className="col-md-6">
                                   <li>
-                                    <a href="/region">East Village</a>
+                                    <a href="/neighborhood/east-village">
+                                      East Village
+                                    </a>
                                   </li>
                                   <li>
-                                    <a href="/region">Williamsburg</a>
+                                    <a href="/neighborhood/williamsburg">
+                                      Williamsburg
+                                    </a>
                                   </li>
                                   <li>
-                                    <a href="/region">Astoria</a>
+                                    <a href="/neighborhood/astoria">Astoria</a>
                                   </li>
                                   <li>
-                                    <a href="/region">View All</a>
+                                    <a href="/all">View All</a>
                                   </li>
                                 </div>
                               </div>

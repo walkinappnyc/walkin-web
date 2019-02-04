@@ -49,31 +49,3 @@ export const cleanFeatures = features => {
     buildingFeatures
   };
 };
-
-export function mergeTransportationData(trains) {
-  const cleanTranportation = {};
-  const transportationList = [];
-  for (let i = 0; i < trains.length; i++) {
-    const train = cleanTranportation[trains[i].station];
-
-    if (train) {
-      train.line.push(trains[i].line);
-    } else {
-      cleanTranportation[trains[i].station] = {
-        line: [trains[i].line],
-        station: trains[i].station,
-        proximity: trains[i].proximity
-      };
-    }
-  }
-
-  Object.keys(cleanTranportation).map(key => {
-    const train = cleanTranportation[key];
-    transportationList.push({
-      line: train.line,
-      station: train.station,
-      proximity: train.proximity
-    });
-  });
-  return transportationList;
-}

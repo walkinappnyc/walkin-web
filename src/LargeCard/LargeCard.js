@@ -65,11 +65,7 @@ const renderImages = (images, id) => {
     if (image.type === 'floorplan') return null;
     return (
       <a key={id} href={`/unit/${id}`}>
-        <img
-          alt={image.description}
-          style={{ height: '210px' }}
-          src={image.url}
-        />
+        <img alt={image.description} className="cardImage" src={image.url} />
       </a>
     );
   });
@@ -77,13 +73,15 @@ const renderImages = (images, id) => {
 
 class LargeCard extends Component {
   render() {
-    const { property } = this.props;
+    const { classes, property } = this.props;
     return (
-      <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 largeCard">
+      <div
+        className={`${classes} col-xs-12 col-sm-6 col-md-6 col-lg-4 largeCard`}
+      >
         {renderPill(property.location.neighborhood)}
         <div className="card mb-4 box-shadow">
           <Slider {...settings}>
-            {renderImages(property.media, property.id)}
+            {renderImages(property.media, property.xml_id)}
           </Slider>
           <div className="card-body text-center">
             <div className="container">
@@ -100,7 +98,7 @@ class LargeCard extends Component {
                 <div>{property.details.bathrooms} BATH</div>
               </div>
               <div className="row justify-content-center">
-                <Link to={`/unit/${property.id}`}>
+                <Link to={`/unit/${property.xml_id}`}>
                   <div className="address ellipsis">
                     {property.location.address} {property.location.apartment},{' '}
                     {property.location.state} {property.location.zipcode}

@@ -23,7 +23,11 @@ class App extends Component {
           <div style={{ marginTop: '64px' }}>
             <Route path="/" exact component={Homepage} />
             <Route path="/about" component={AboutPage} />
-            <Route path="/region" component={RegionPage} />
+            <Route path="/borough/:boroughName" component={RegionPage} />
+            <Route
+              path="/neighborhood/:neighborhoodhName"
+              component={RegionPage}
+            />
             <Route path="/unit/:unitID" component={UnitPage} />
             <Route path="/youshallnotpass4876" component={ActivationPage} />
           </div>

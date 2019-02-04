@@ -4,7 +4,28 @@ import { triggerPageViewEvent } from '../analytics';
 import './styles.scss';
 
 class Footer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: null
+    };
+  }
+
+  componentDidMount() {
+    fetch('https://walkin-staging.herokuapp.com/api/properties')
+      .then(resp => resp.json())
+      .then(data => {
+        const activeData = data.filter(
+          property => property.isActive && property.isFeatured
+        );
+        this.setState({ data: activeData });
+      });
+    triggerPageViewEvent();
+  }
+
   render() {
+    if (!this.state.data) return null;
     return (
       <div className="footer">
         <footer>
@@ -16,13 +37,19 @@ class Footer extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-md-4">
-                  <RecircCard />
+                  <RecircCard
+                    property={this.state.data[this.state.data.length - 1]}
+                  />
                 </div>
                 <div className="col-md-4">
-                  <RecircCard />
+                  <RecircCard
+                    property={this.state.data[this.state.data.length - 2]}
+                  />
                 </div>
                 <div className="col-md-4">
-                  <RecircCard />
+                  <RecircCard
+                    property={this.state.data[this.state.data.length - 3]}
+                  />
                 </div>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import LargeCard from '../LargeCard/LargeCard';
 import { triggerPageViewEvent } from '../analytics';
+import { filterNeighborhood, filterBorough } from '../Nav/helpers';
 import './styles.scss';
 
 class RegionPage extends Component {
@@ -23,12 +24,13 @@ class RegionPage extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
+    const boroughName = this.props.match.params.boroughName;
+    const neighborhoodhName = this.props.match.params.neighborhoodhName;
     fetch('https://walkin-staging.herokuapp.com/api/properties')
       .then(resp => resp.json())
       .then(data => {
-        const sortedData = data.sort(
-          (a, b) => a.details.price - b.details.price
-        );
+        let sortedData;
+        sortedData = data.sort((a, b) => a.details.price - b.details.price);
         this.setState({ data: sortedData, validUnits: sortedData });
       });
     triggerPageViewEvent();

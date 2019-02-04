@@ -1,6 +1,22 @@
 .largeCard {
-  max-width: 380px;
+  max-width: 367px;
   margin: 0 auto;
+
+  .cardImage {
+    max-height: 324px;
+    width: 100%;
+  }
+
+  &.floatLeft {
+    float: left;
+  }
+
+  &.paddingZero {
+    @media (min-width: 576px) {
+      padding: 0;
+    }
+  }
+
   .pill {
     -webkit-font-smoothing: antialiased;
     border-radius: 30px;

@@ -1,41 +1,63 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { triggerPageViewEvent } from '../analytics';
 import './styles.scss';
 
+function renderBedroomText(rooms) {
+  if (rooms === '0') return 'STUDIO';
+  return `${rooms}`;
+}
+
 class RecircCard extends Component {
   render() {
+    const { classes, property } = this.props;
+    if (!property) return null;
     return (
-      <div className="card mb-4 box-shadow recircCard">
-        <div className="row no-gutters">
-          <div className="col-xs-4">
-            <img
-              alt=""
-              className="card-img-top"
-              src="/images/3.jpg"
-              style={{ width: '127px' }}
-            />
-          </div>
-          <div className="col-xs-8">
-            <div
-              className="container gutters justify-content-left"
-              style={{ margin: '8px 23px 0 17px' }}
-            >
-              <div className="row">
-                <div className="text-primary region">Columbus Circle</div>
-              </div>
-              <div className="row">
-                <div className="text-muted address">
-                  20-10 Seagirt Bvld Far Rockaway, NY 11691
+      <div className={`${classes} card mb-4 box-shadow recircCard`}>
+        <div>
+          <div className="row">
+            <div className="col-4">
+              <a key={property.xml_id} href={`/unit/${property.xml_id}`}>
+                <img
+                  alt=""
+                  className="recircImage"
+                  src={property.media[0].url}
+                />
+              </a>
+            </div>
+            <div className="col-8">
+              <div className="container gutters justify-content-left details">
+                <div className="text-primary justify-content-left region">
+                  {property.neighborhood}
                 </div>
-              </div>
-              <div className="row">
-                <span className="card-text price">$6,410</span>
-              </div>
-              <div className="row">
-                <img alt="" className="svgStyle" src="/icons/bed.svg" />
-                <div>2 | {'  '}</div>
-                <img alt="" className="svgStyle" src="/icons/bathtub.svg" />
-                <div>2</div>
+                <div className="text-muted justify-content-left address ellipsis">
+                  <Link to={`/unit/${property.xml_id}`}>
+                    {property.location.address} {property.location.apartment},{' '}
+                    {property.location.state} {property.location.zipcode}
+                  </Link>
+                </div>
+                <span className="card-text justify-content-left price">
+                  $
+                  {property.details.price.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                </span>
+                <div className="text-left">
+                  <img
+                    alt=""
+                    className="svgStyle d-inline-block"
+                    src="/icons/bed.svg"
+                  />
+                  <div className="d-inline-block">
+                    {renderBedroomText(property.details.bedrooms)} | {'  '}
+                  </div>
+                  <img
+                    alt=""
+                    className="svgStyle d-inline-block"
+                    src="/icons/bathtub.svg"
+                  />
+                  <div className="d-inline-block">
+                    {property.details.bathrooms}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
