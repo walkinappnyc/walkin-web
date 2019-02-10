@@ -1,4 +1,24 @@
+.homepageWrapper {
+  :first-child {
+    padding-top: 0;
+  }
+}
+.homepageHeader {
+  font-family: 'roboto-light';
+  font-size: 52px;
+  color: #6d5b97;
+  margin: 52px auto 27px;
+}
+
 .section {
   padding-top: 80px;
   padding-bottom: 60px;
+}
+
+.bg-color-grey {
+  background-color: #fafafa;
+}
+
+.bg-color-purple {
+  background-color: rgba(109, 91, 151, 0.6);
 }

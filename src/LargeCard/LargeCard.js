@@ -47,17 +47,18 @@ const svgStyles = {
   margin: '0 5px 0 14px'
 };
 
-const renderPill = place => {
-  const regions = [
-    { color: 'purple' },
-    { color: 'red' },
-    { color: 'yellow' },
-    { color: 'blue' }
-  ];
-  const randomPillNum = regions[Math.floor(Math.random() * regions.length)];
-  const pillColor = randomPillNum.color;
-
-  return <div className={`pill ${pillColor}`}>{place}</div>;
+const renderPill = location => {
+  const colors = {
+    'New York ': { color: 'purple' },
+    Bronx: { color: 'red' },
+    Queens: { color: 'yellow' },
+    'New Rochelle': { color: 'blue' },
+    Irvington: { color: 'seafoam' },
+    'Far Rockaway': { color: 'burntOrange' },
+    'White Plains': { color: 'burntOrange' }
+  };
+  const pillColor = colors[location.city].color;
+  return <div className={`pill ${pillColor}`}>{location.neighborhood}</div>;
 };
 
 const renderImages = (images, id) => {
@@ -78,7 +79,7 @@ class LargeCard extends Component {
       <div
         className={`${classes} col-xs-12 col-sm-6 col-md-6 col-lg-4 largeCard`}
       >
-        {renderPill(property.location.neighborhood)}
+        {renderPill(property.location)}
         <div className="card mb-4 box-shadow">
           <Slider {...settings}>
             {renderImages(property.media, property.xml_id)}

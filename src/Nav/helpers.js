@@ -335,7 +335,7 @@ export const regions = {
   ]
 };
 
-export const filterRegion = (neighborhood, properties) =>
+export const filterNeighborhood = (neighborhood, properties) =>
   properties.filter(
     property => property.location.neighborhood.trim() === neighborhood
   );

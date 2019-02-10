@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LargeCard from '../LargeCard/LargeCard';
 import HugeCard from '../HugeCard/HugeCard';
 import RecircCard from '../RecircCard/RecircCard';
+import { fetchData } from '../apis';
 import { triggerPageViewEvent } from '../analytics';
 import './styles.scss';
 class Homepage extends Component {
@@ -15,14 +16,14 @@ class Homepage extends Component {
   }
 
   componentDidMount() {
-    fetch('https://walkin-staging.herokuapp.com/api/properties')
-      .then(resp => resp.json())
-      .then(data => {
+    fetchData('https://walkin-staging.herokuapp.com/api/properties').then(
+      data => {
         const activeData = data.filter(
           property => property.isActive && property.isFeatured
         );
         this.setState({ data: activeData });
-      });
+      }
+    );
     triggerPageViewEvent();
   }
 
@@ -40,31 +41,51 @@ class Homepage extends Component {
     }
 
     return tempArray.map((properties, index) => {
-      const backgroundColor = index % 2 === 0 ? '#f5f5f5' : '#6d5b97';
-      return (
-        <div className="container-fluid section" style={{ backgroundColor }}>
-          <div className="container">
-            <div className="row">
-              {/* <div className="col-12 col-sm-7 ">
-                <HugeCard property={properties[0]} />
-              </div> */}
-              <div className="col-12 col-sm-7">
-                <LargeCard
-                  classes={'hugeCard paddingZero'}
-                  property={properties[0]}
-                />
-              </div>
-              <div className="col-12 col-sm-5">
-                <LargeCard
-                  classes={'floatLeft paddingZero'}
-                  property={properties[1]}
-                />
-                <RecircCard property={properties[2]} classes={'floatLeft'} />
+      const backgroundColor =
+        index % 2 === 0 ? 'bg-color-grey' : 'bg-color-purple';
+
+      if (index % 2 === 0) {
+        return (
+          <div className={`${backgroundColor} container-fluid section`}>
+            <div className="container">
+              <div className="row">
+                <div className="col-12 col-sm-7">
+                  <LargeCard
+                    classes={'hugeCard paddingZero'}
+                    property={properties[0]}
+                  />
+                </div>
+                <div className="col-12 col-sm-5">
+                  <LargeCard
+                    classes={'floatLeft paddingZero'}
+                    property={properties[1]}
+                  />
+                  <RecircCard property={properties[2]} classes={'floatLeft'} />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      );
+        );
+      } else {
+        return (
+          <div className={`${backgroundColor} container-fluid section`}>
+            <div className="container">
+              <div className="row">
+                <div className="col-12 col-sm-5">
+                  <LargeCard classes={'paddingZero'} property={properties[1]} />
+                  <RecircCard property={properties[2]} />
+                </div>
+                <div className="col-12 col-sm-7">
+                  <LargeCard
+                    classes={'hugeCard paddingZero floatLeft'}
+                    property={properties[0]}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
     });
   }
 
@@ -72,10 +93,11 @@ class Homepage extends Component {
     const { data } = this.state;
     if (data === null) return null;
     return (
-      <div className="album bg-light">
+      <div>
         <img alt="" style={{ width: '100%' }} src="welcome.jpg" />
         <div className="container-fluid">
-          <div className="row">{this.renderCards()}</div>
+          <div className="homepageHeader">Featured Rentals</div>
+          <div className="row homepageWrapper">{this.renderCards()}</div>
         </div>
       </div>
     );

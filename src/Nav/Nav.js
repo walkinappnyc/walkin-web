@@ -52,21 +52,19 @@ class Nav extends Component {
                             <ul>
                               <li className="menuHeader">BOROUGHS</li>
                               <li>
-                                <a href="/borough/manhattan">Manhattan</a>
+                                <a href="/borough/New York ">New York</a>
                               </li>
                               <li>
-                                <a href="/borough/brooklyn">Brooklyn</a>
+                                <a href="/borough/New Rochelle">New Rochelle</a>
                               </li>
                               <li>
-                                <a href="/borough/queens">Queens</a>
+                                <a href="/borough/Irvington">Irvington</a>
                               </li>
                               <li>
-                                <a href="/borough/bronx">Bronx</a>
+                                <a href="/borough/Far Rockaway">Far Rockaway</a>
                               </li>
                               <li>
-                                <a href="/borough/staten-island">
-                                  Staten Island
-                                </a>
+                                <a href="/borough/White Plains">White Plains</a>
                               </li>
                               <li>
                                 <a href="/all">All NYC</a>

@@ -2,9 +2,9 @@
   max-width: 367px;
   margin: 0 auto;
 
-  .cardImage {
-    max-height: 324px;
-    width: 100%;
+  &.fixMargin {
+    margin: 0;
+    margin-left: 13px;
   }
 
   &.floatLeft {
@@ -15,6 +15,10 @@
     @media (min-width: 576px) {
       padding: 0;
     }
+  }
+  .cardImage {
+    max-height: 324px;
+    width: 100%;
   }
 
   .pill {
@@ -44,6 +48,14 @@
 
     &.blue {
       background-color: #2d80ae;
+    }
+
+    &.seafoam {
+      background-color: #36cab4;
+    }
+
+    &.burntOrange {
+      background-color: #d36b1b;
     }
   }
   .price {
@@ -100,6 +112,92 @@
         background-repeat: no-repeat;
         background-size: cover;
       }
+    }
+  }
+}
+
+.pill {
+  -webkit-font-smoothing: antialiased;
+  border-radius: 30px;
+  color: #fff;
+  display: block;
+  font-family: 'roboto-bold';
+  font-size: 13px;
+  padding: 1px 12px;
+  position: absolute;
+  right: 35px;
+  top: -10px;
+  z-index: 1;
+
+  &.purple {
+    background-color: #6d5b97;
+  }
+
+  &.red {
+    background-color: #d74361;
+  }
+
+  &.yellow {
+    background-color: #f7b138;
+  }
+
+  &.blue {
+    background-color: #2d80ae;
+  }
+}
+.price {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.smDivider {
+  background-color: rgba(109, 91, 151, 0.2);
+  height: 22px;
+  margin-left: 10px;
+  width: 1px;
+}
+
+.address {
+  max-width: 250px;
+  font-size: 14px;
+}
+
+.nextArrow {
+  &.slick-next {
+    height: 200px;
+    right: 0px;
+    z-index: 1;
+    width: 45px;
+
+    &:before {
+      content: '';
+      display: block;
+      background-image: url('/icons/right-arrow.svg');
+      width: 12px;
+      height: 22.5px;
+      margin: 83px auto;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+}
+
+.prevArrow {
+  &.slick-prev {
+    height: 200px;
+    left: 0px;
+    z-index: 1;
+    width: 45px;
+
+    &:before {
+      content: '';
+      margin: 83px auto;
+      display: block;
+      background-image: url('/icons/left-arrow.svg');
+      width: 12px;
+      height: 22.5px;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import LargeCard from '../LargeCard/LargeCard';
 import { triggerPageViewEvent } from '../analytics';
+import { getFilteredProperties } from '../apis';
 import { filterNeighborhood, filterBorough } from '../Nav/helpers';
 import './styles.scss';
 
@@ -14,7 +15,9 @@ class RegionPage extends Component {
       rooms: [],
       sort: 'Lowest to Highest',
       min: null,
-      max: null
+      max: null,
+      region: null,
+      area: null
     };
     this.renderCards = this.renderCards.bind(this);
     this.toggelRooms = this.toggelRooms.bind(this);
@@ -24,15 +27,13 @@ class RegionPage extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    const boroughName = this.props.match.params.boroughName;
-    const neighborhoodhName = this.props.match.params.neighborhoodhName;
-    fetch('https://walkin-staging.herokuapp.com/api/properties')
-      .then(resp => resp.json())
-      .then(data => {
-        let sortedData;
-        sortedData = data.sort((a, b) => a.details.price - b.details.price);
-        this.setState({ data: sortedData, validUnits: sortedData });
-      });
+    const region = this.props.match.params.boroughName;
+    const area = this.props.match.params.neighborhoodhName;
+    const paramType = region ? 'nav_city' : 'nav_state';
+    const paramArea = region ? region : area;
+    getFilteredProperties(paramType, paramArea).then(data =>
+      this.setState({ data, validUnits: data, region, area })
+    );
     triggerPageViewEvent();
   }
 
@@ -87,14 +88,14 @@ class RegionPage extends Component {
   }
 
   renderCards() {
-    const { data, validUnits } = this.state;
-    if (!data) return null;
+    const { validUnits } = this.state;
     return validUnits.map(property => (
-      <LargeCard key={property.id} property={property} />
+      <LargeCard classes={'fixMargin'} key={property.id} property={property} />
     ));
   }
 
   render() {
+    if (!this.state.data) return null;
     return (
       <div className="region">
         <div
@@ -105,7 +106,7 @@ class RegionPage extends Component {
             marginBottom: '39px'
           }}
         >
-          <div className="heroAddress">Manhattan</div>
+          <div className="heroAddress">{this.state.region}</div>
         </div>
         <div
           className="container"
