@@ -1,6 +1,15 @@
 import React from 'react';
 import { triggerPageViewEvent } from '../analytics';
 
+const sendEmail = e => {
+  console.log(e);
+  emailjs.send('yamikamisama_gmail_com', 'template_7m0IX5qp', {
+    from_name: 'Walk.in',
+    to_name: 'Andrew GoldFarb',
+    message_html: 'Boday'
+  });
+};
+
 const ContactModal = () => {
   return (
     <div
@@ -114,7 +123,11 @@ const ContactModal = () => {
             <div className="modal-footer">
               <div className="col-sm-12 col-md-12">
                 <span className="form-group">
-                  <button type="submit" className="btn btn-outline-primary">
+                  <button
+                    onSubmit={e => sendEmail(3)}
+                    type="submit"
+                    className="btn btn-outline-primary"
+                  >
                     Send Message
                   </button>
                 </span>

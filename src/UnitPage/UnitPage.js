@@ -4,6 +4,7 @@ import DescriptorCard from './DescriptorCard';
 import FeaturesCard from './FeaturesCard';
 import LargeCard from '../LargeCard/LargeCard';
 import ContactModal from '../Modals/ContactModal';
+import OpenHouseModal from '../Modals/OpenHouseModal';
 import FloorplanModal from '../Modals/FloorplanModal';
 import StickySide from './StickySide';
 
@@ -198,6 +199,7 @@ class UnitPage extends Component {
         </div>
 
         <ContactModal />
+        <OpenHouseModal openHouses={property.open_houses} />
         <FloorplanModal floorPlan={floorPlan} />
       </div>
     );

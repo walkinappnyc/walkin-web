@@ -7,6 +7,31 @@ const renderBedroomText = rooms => {
   return `${rooms} BED`;
 };
 
+const renderSeeApartmentBtn = (property, walkin = null) => {
+  if (!walkin && property.open_houses.length < 1) return null;
+  if (walkin) {
+    return (
+      <button
+        type="button"
+        className="btn btn-outline-primary btn-block btnMargin"
+      >
+        <img className="logoBtn" src="/logo.svg" alt="" />
+      </button>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      className="btn btn-outline-primary btn-block"
+      data-toggle="modal"
+      data-target="#openHouses"
+    >
+      Open Houses
+    </button>
+  );
+};
+
 const StickySide = ({ property }) => {
   return (
     <div className="stickySidebar">
@@ -62,14 +87,7 @@ const StickySide = ({ property }) => {
               </a>
             </button>
           </div>
-          <div className="col-md-12">
-            <button
-              type="button"
-              className="btn btn-outline-primary btn-block btnMargin"
-            >
-              <img className="logoBtn" src="/logo.svg" alt="" />
-            </button>
-          </div>
+          <div className="col-md-12">{renderSeeApartmentBtn(property)}</div>
         </div>
       </div>
     </div>
