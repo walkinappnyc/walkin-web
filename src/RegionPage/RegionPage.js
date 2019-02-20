@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import LargeCard from '../LargeCard/LargeCard';
 import { triggerPageViewEvent } from '../analytics';
 import { getFilteredProperties } from '../apis';
-import { filterNeighborhood, filterBorough } from '../Nav/helpers';
 import './styles.scss';
 
 class RegionPage extends Component {
@@ -16,7 +15,7 @@ class RegionPage extends Component {
       sort: 'Lowest to Highest',
       min: null,
       max: null,
-      region: null,
+      city: null,
       area: null
     };
     this.renderCards = this.renderCards.bind(this);
@@ -27,13 +26,13 @@ class RegionPage extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    const region = this.props.match.params.boroughName;
+    const city = this.props.match.params.cityName;
     const area = this.props.match.params.neighborhoodhName;
-    const paramType = region ? 'nav_city' : 'nav_state';
-    const paramArea = region ? region : area;
-    getFilteredProperties(paramType, paramArea).then(data =>
-      this.setState({ data, validUnits: data, region, area })
-    );
+    const paramType = city ? 'nav_city' : 'neighborhood';
+    const paramArea = city ? city : area;
+    getFilteredProperties(paramType, paramArea).then(data => {
+      this.setState({ data, validUnits: data, city, area });
+    });
     triggerPageViewEvent();
   }
 
@@ -80,7 +79,6 @@ class RegionPage extends Component {
 
   updateRange(e) {
     const validUnits = this.state.data.filter(unit => {
-      debugger;
       return parseInt(unit.details.price) > parseInt(e.target.value);
     });
     this.setState({ min: e.target.value });
@@ -106,7 +104,7 @@ class RegionPage extends Component {
             marginBottom: '39px'
           }}
         >
-          <div className="heroAddress">{this.state.region}</div>
+          <div className="heroAddress">{this.state.city}</div>
         </div>
         <div
           className="container"

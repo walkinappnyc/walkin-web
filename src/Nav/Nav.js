@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import RecircCard from '../RecircCard/RecircCard';
+import { connect } from 'react-redux';
 import { triggerPageViewEvent } from '../analytics';
 import './styles.scss';
 
@@ -13,6 +14,7 @@ class Nav extends Component {
 
     this.mouseEnter = this.mouseEnter.bind(this);
     this.mouseLeave = this.mouseLeave.bind(this);
+    this.renderNavItems = this.renderNavItems.bind(this);
   }
 
   mouseEnter = () => {
@@ -28,7 +30,19 @@ class Nav extends Component {
     return 'hide';
   }
 
+  renderNavItems(area, items) {
+    return items.map(value => {
+      return (
+        <li>
+          <a href={`/${area}/${value}`}>{value}</a>
+        </li>
+      );
+    });
+  }
+
   render() {
+    const { citys, neighborhoods, properties } = this.props;
+    if (!properties) return null;
     return (
       <div style={{ position: 'sticky', zIndex: '2' }}>
         <nav>
@@ -50,25 +64,8 @@ class Nav extends Component {
                         <div className="row">
                           <div className="col-md-4">
                             <ul>
-                              <li className="menuHeader">BOROUGHS</li>
-                              <li>
-                                <a href="/borough/New York ">New York</a>
-                              </li>
-                              <li>
-                                <a href="/borough/New Rochelle">New Rochelle</a>
-                              </li>
-                              <li>
-                                <a href="/borough/Irvington">Irvington</a>
-                              </li>
-                              <li>
-                                <a href="/borough/Far Rockaway">Far Rockaway</a>
-                              </li>
-                              <li>
-                                <a href="/borough/White Plains">White Plains</a>
-                              </li>
-                              <li>
-                                <a href="/all">All NYC</a>
-                              </li>
+                              <li className="menuHeader">CITYS</li>
+                              {this.renderNavItems('city', citys)}
                             </ul>
                           </div>
                           <div className="col-md-8">
@@ -76,42 +73,16 @@ class Nav extends Component {
                               <li className="menuHeader">NEIGHBORHOODS</li>
                               <div className="row">
                                 <div className="col-md-6">
-                                  <li>
-                                    <a href="/neighborhood/tribeca">Tribeca</a>
-                                  </li>
-                                  <li>
-                                    <a href="/neighborhood/upper-east-side">
-                                      Upper East Side
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="/neighborhood/upper-west-side">
-                                      Upper West Side
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="/neighborhood/midtown">Midtown</a>
-                                  </li>
-                                  <li>
-                                    <a href="/neighborhood/west-village">
-                                      West Village
-                                    </a>
-                                  </li>
+                                  {this.renderNavItems(
+                                    'neighborhood',
+                                    Object.values(neighborhoods).slice(0, 6)
+                                  )}
                                 </div>
                                 <div className="col-md-6">
-                                  <li>
-                                    <a href="/neighborhood/east-village">
-                                      East Village
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="/neighborhood/williamsburg">
-                                      Williamsburg
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="/neighborhood/astoria">Astoria</a>
-                                  </li>
+                                  {this.renderNavItems(
+                                    'neighborhood',
+                                    Object.values(neighborhoods).slice(6, 11)
+                                  )}
                                   <li>
                                     <a href="/all">View All</a>
                                   </li>
@@ -123,8 +94,8 @@ class Nav extends Component {
                       </div>
                       <div className="col-md-4">
                         <div className="menuHeader">FEATURED RENTALS</div>
-                        <RecircCard />
-                        <RecircCard />
+                        <RecircCard property={properties['0']} />
+                        <RecircCard property={properties['1']} />
                       </div>
                     </div>
                   </div>
@@ -138,4 +109,10 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+const mapStateToProps = state => ({
+  properties: state.propertiesReducer.data,
+  citys: state.propertiesReducer.navItems.citys,
+  neighborhoods: state.propertiesReducer.navItems.neighborhoods
+});
+
+export default connect(mapStateToProps)(Nav);

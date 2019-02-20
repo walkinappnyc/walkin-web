@@ -9,10 +9,13 @@ import Homepage from './Homepage/Homepage';
 import Nav from './Nav/Nav';
 import RegionPage from './RegionPage/RegionPage';
 import UnitPage from './UnitPage/UnitPage';
+import { getData } from './actions/propertyActions';
+import { connect } from 'react-redux';
 
 class App extends Component {
   componentDidMount() {
     initAnalytics();
+    this.props.getData();
   }
 
   render() {
@@ -23,7 +26,7 @@ class App extends Component {
           <div style={{ marginTop: '64px' }}>
             <Route path="/" exact component={Homepage} />
             <Route path="/about" component={AboutPage} />
-            <Route path="/borough/:boroughName" component={RegionPage} />
+            <Route path="/city/:cityName" component={RegionPage} />
             <Route
               path="/neighborhood/:neighborhoodhName"
               component={RegionPage}
@@ -38,4 +41,15 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  getData: () => dispatch(getData())
+});
+
+const mapStateToProps = state => ({
+  ...state
+});
+
+export default connect(
+  mapDispatchToProps,
+  mapDispatchToProps
+)(App);

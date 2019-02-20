@@ -6,7 +6,6 @@ export function fetchData(url) {
 
 export const getFilteredProperties = (type, area) => {
   const url = `${apiRoot}Properties?filter={"where": {"${type}": "${area}"} }`;
-  debugger;
   return fetchData(url).then(data => {
     let sortedData;
     sortedData = data.sort((a, b) => a.details.price - b.details.price);

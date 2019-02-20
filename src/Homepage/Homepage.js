@@ -2,40 +2,29 @@ import React, { Component } from 'react';
 import LargeCard from '../LargeCard/LargeCard';
 import HugeCard from '../HugeCard/HugeCard';
 import RecircCard from '../RecircCard/RecircCard';
+import { connect } from 'react-redux';
 import { fetchData } from '../apis';
 import { triggerPageViewEvent } from '../analytics';
 import './styles.scss';
 class Homepage extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      data: null
-    };
     this.renderCards = this.renderCards.bind(this);
   }
 
   componentDidMount() {
-    fetchData('https://walkin-staging.herokuapp.com/api/properties').then(
-      data => {
-        const activeData = data.filter(
-          property => property.isActive && property.isFeatured
-        );
-        this.setState({ data: activeData });
-      }
-    );
     triggerPageViewEvent();
   }
 
   renderCards() {
-    const { data } = this.state;
+    const { properties } = this.props;
 
     var index = 0;
-    var arrayLength = data.length;
+    var arrayLength = properties.length;
     var tempArray = [];
 
     for (index = 0; index < arrayLength; index += 3) {
-      let myChunk = data.slice(index, index + 3);
+      let myChunk = properties.slice(index, index + 3);
       // Do something if you want with the group
       tempArray.push(myChunk);
     }
@@ -90,8 +79,8 @@ class Homepage extends Component {
   }
 
   render() {
-    const { data } = this.state;
-    if (data === null) return null;
+    const { properties } = this.props;
+    if (!properties) return null;
     return (
       <div>
         <img alt="" style={{ width: '100%' }} src="welcome.jpg" />
@@ -104,4 +93,8 @@ class Homepage extends Component {
   }
 }
 
-export default Homepage;
+const mapStateToProps = state => ({
+  properties: state.propertiesReducer.data
+});
+
+export default connect(mapStateToProps)(Homepage);

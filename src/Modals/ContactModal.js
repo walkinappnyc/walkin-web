@@ -3,11 +3,22 @@ import { triggerPageViewEvent } from '../analytics';
 
 const sendEmail = e => {
   console.log(e);
-  emailjs.send('yamikamisama_gmail_com', 'template_7m0IX5qp', {
-    from_name: 'Walk.in',
-    to_name: 'Andrew GoldFarb',
-    message_html: 'Boday'
-  });
+  e.preventDefault();
+  window.emailjs
+    .send('yamikamisama_gmail_com', 'template_7m0IX5qp', {
+      subject: 'Apt 123',
+      from_name: 'asd',
+      to_name: 'asd',
+      message_html: 'asd'
+    })
+    .then(
+      function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+      },
+      function(err) {
+        console.log('FAILED...', err);
+      }
+    );
 };
 
 const ContactModal = () => {
@@ -124,8 +135,7 @@ const ContactModal = () => {
               <div className="col-sm-12 col-md-12">
                 <span className="form-group">
                   <button
-                    onSubmit={e => sendEmail(3)}
-                    type="submit"
+                    onClick={e => sendEmail(e)}
                     className="btn btn-outline-primary"
                   >
                     Send Message

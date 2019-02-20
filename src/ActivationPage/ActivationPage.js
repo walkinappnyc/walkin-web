@@ -40,7 +40,6 @@ class ActivationPage extends Component {
   renderListItems() {
     const { data } = this.state;
     return data.map(property => {
-      debugger;
       return (
         <tr key={property.id}>
           <td>{property.landlord.company}</td>
