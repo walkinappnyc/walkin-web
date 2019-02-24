@@ -3,7 +3,6 @@ import LargeCard from '../LargeCard/LargeCard';
 import HugeCard from '../HugeCard/HugeCard';
 import RecircCard from '../RecircCard/RecircCard';
 import { connect } from 'react-redux';
-import { fetchData } from '../apis';
 import { triggerPageViewEvent } from '../analytics';
 import './styles.scss';
 class Homepage extends Component {
@@ -30,6 +29,7 @@ class Homepage extends Component {
     }
 
     return tempArray.map((properties, index) => {
+      if (properties.length < 3) return null;
       const backgroundColor =
         index % 2 === 0 ? 'bg-color-grey' : 'bg-color-purple';
 
@@ -85,7 +85,8 @@ class Homepage extends Component {
       <div>
         <img alt="" style={{ width: '100%' }} src="welcome.jpg" />
         <div className="container-fluid">
-          <div className="homepageHeader">Featured Rentals</div>
+          {/* This is the Homepage header before the listings */}
+          {/* <div className="homepageHeader">Featured Rentals</div> */}
           <div className="row homepageWrapper">{this.renderCards()}</div>
         </div>
       </div>

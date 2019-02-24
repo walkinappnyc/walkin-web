@@ -55,7 +55,8 @@ class Footer extends Component {
             </div>
           </div>
           <div className="container">
-            <div className="row justify-content-center">
+            {/* Add this in when Andrew is ready with the information */}
+            {/* <div className="row justify-content-center">
               <ul className="footerLinks">
                 <li>
                   <a href="#">Submit Your Listings</a>
@@ -70,7 +71,7 @@ class Footer extends Component {
                   <a href="#">Terms of Use & Privacy Policy</a>
                 </li>
               </ul>
-            </div>
+            </div> */}
             <hr />
             <div className="row justify-content-center">
               <ul className="footerSocial">
@@ -80,20 +81,18 @@ class Footer extends Component {
                   </a>
                 </li>
                 <li>
-                  <a href="https://twitter.com/_walkin_app">
+                  <a href="https://twitter.com/walkdotin">
                     <img alt="" src="/icons/twitter.svg" />
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.instagram.com/walk.in_">
+                  <a href="https://www.instagram.com/walkdotin">
                     <img alt="" src="/icons/instagram.svg" />
                   </a>
                 </li>
               </ul>
             </div>
-            <div className="row justify-content-center">
-              ©2018 Andrew Goldfarb
-            </div>
+            <div className="row justify-content-center">©2018 Walk.in</div>
           </div>
         </footer>
       </div>

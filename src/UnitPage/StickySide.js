@@ -37,9 +37,9 @@ const StickySide = ({ property }) => {
     <div className="stickySidebar">
       <div className={`container card mb-5 box-shadow wrapper`}>
         <div className="row">
-          {property.incentives && property.incentives.name ? (
+          {property.incentives.length > 0 && property.incentives[0].name ? (
             <div className="col-md-12 amentity">
-              {property.incentives.name.toUpperCase()}
+              {property.incentives[0].name.toUpperCase()}
             </div>
           ) : null}
           <div className="col-md-12 price">
@@ -64,8 +64,10 @@ const StickySide = ({ property }) => {
             {property.location.state} {property.location.zipcode}
           </div>
           <div className="col-md-12 sidebarSection phone">
-            <img className="svgStyles" src="/icons/phone.svg" alt="" />
-            {property.agents[0].phone_number}
+            <a href={`tel:${property.agents[0].phone_number}`}>
+              <img className="svgStyles" src="/icons/phone.svg" alt="" />
+              {property.agents[0].phone_number}
+            </a>
           </div>
           <div className="col-md-12 sidebarButtons">
             <button

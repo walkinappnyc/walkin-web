@@ -57,11 +57,14 @@ const renderPill = location => {
     'Far Rockaway': { color: 'burntOrange' },
     'White Plains': { color: 'burntOrange' }
   };
-  const pillColor = colors[location.city].color;
+  const pillColor =
+    (colors[location.city] && colors[location.city].color) || 'burntOrange';
+
   return <div className={`pill ${pillColor}`}>{location.neighborhood}</div>;
 };
 
 const renderImages = (images, id) => {
+  if (!images) return null;
   return images.map(image => {
     if (image.type === 'floorplan') return null;
     return (

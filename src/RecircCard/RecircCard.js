@@ -14,16 +14,10 @@ class RecircCard extends Component {
     if (!property) return null;
     return (
       <div className={`${classes} card mb-4 box-shadow recircCard`}>
-        <div>
+        <a href={`/unit/${property.xml_id}`} key={property.xml_id}>
           <div className="row">
             <div className="col-4">
-              <a key={property.xml_id} href={`/unit/${property.xml_id}`}>
-                <img
-                  alt=""
-                  className="recircImage"
-                  src={property.media[0].url}
-                />
-              </a>
+              <img alt="" className="recircImage" src={property.media[0].url} />
             </div>
             <div className="col-8">
               <div className="container gutters justify-content-left details">
@@ -61,7 +55,7 @@ class RecircCard extends Component {
               </div>
             </div>
           </div>
-        </div>
+        </a>
       </div>
     );
   }
