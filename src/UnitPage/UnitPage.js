@@ -8,6 +8,7 @@ import OpenHouseModal from '../Modals/OpenHouseModal';
 import FloorplanModal from '../Modals/FloorplanModal';
 import StickySide from './StickySide';
 
+import { apiRoot } from '../apis';
 import { triggerPageViewEvent } from '../analytics';
 import './styles.scss';
 
@@ -67,12 +68,12 @@ class UnitPage extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     const unitID = this.props.match.params.unitID;
-    fetch(`https://walkin-staging.herokuapp.com/api/properties/${unitID}`)
+    fetch(`${apiRoot}/properties/${unitID}`)
       .then(resp => resp.json())
       .then(data => {
         this.setState({ property: data });
       });
-    fetch('https://walkin-staging.herokuapp.com/api/properties/')
+    fetch(`${apiRoot}/properties/`)
       .then(resp => resp.json())
       .then(data => {
         this.setState({ data });
@@ -138,8 +139,9 @@ class UnitPage extends Component {
           }}
         >
           <div className="heroAddress">
-            {property.location.address} {property.location.apartment},{' '}
-            {property.location.state} {property.location.zipcode}
+            {property.neighborhood} - {property.location.address}{' '}
+            {property.location.apartment}, {property.location.state}{' '}
+            {property.location.zipcode}
           </div>
         </div>
         <div className="container">

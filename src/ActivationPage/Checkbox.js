@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { apiRoot } from '../apis';
+
 import './styles.scss';
 
 class Checkbox extends Component {
@@ -31,7 +33,7 @@ class Checkbox extends Component {
   }
 
   updateActive(opts) {
-    fetch('https://walkin-staging.herokuapp.com/api/Properties/isActive', {
+    fetch(`${apiRoot}/properties/isActive`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -42,7 +44,7 @@ class Checkbox extends Component {
   }
 
   updateFeatured(opts) {
-    fetch('https://walkin-staging.herokuapp.com/api/Properties/isFeatured', {
+    fetch(`${apiRoot}/properties/isFeatured`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'

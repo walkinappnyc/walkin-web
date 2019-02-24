@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Checkbox from './Checkbox';
 import { triggerPageViewEvent } from '../analytics';
+import { apiRoot } from '../apis';
 import './styles.scss';
 
 class ActivationPage extends Component {
@@ -15,7 +16,7 @@ class ActivationPage extends Component {
   }
 
   componentDidMount() {
-    fetch('https://walkin-staging.herokuapp.com/api/properties')
+    fetch(`${apiRoot}/properties/`)
       .then(resp => resp.json())
       .then(data => {
         this.setState({ data });

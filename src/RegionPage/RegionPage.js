@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import LargeCard from '../LargeCard/LargeCard';
 import { triggerPageViewEvent } from '../analytics';
-import { getFilteredProperties } from '../apis';
+import { apiRoot, fetchData, getFilteredProperties } from '../apis';
 import './styles.scss';
 
 class RegionPage extends Component {
@@ -27,12 +27,18 @@ class RegionPage extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     const city = this.props.match.params.cityName;
-    const area = this.props.match.params.neighborhoodhName;
+    const area = this.props.match.params.neighborhoodName;
     const paramType = city ? 'nav_city' : 'neighborhood';
     const paramArea = city ? city : area;
-    getFilteredProperties(paramType, paramArea).then(data => {
-      this.setState({ data, validUnits: data, city, area });
-    });
+    if (window.location.pathname === '/units/all') {
+      fetchData(`${apiRoot}/properties/`).then(data => {
+        this.setState({ data, validUnits: data, area: 'All Properties' });
+      });
+    } else {
+      getFilteredProperties(paramType, paramArea).then(data => {
+        this.setState({ data, validUnits: data, city, area });
+      });
+    }
     triggerPageViewEvent();
   }
 
@@ -104,7 +110,9 @@ class RegionPage extends Component {
             marginBottom: '39px'
           }}
         >
-          <div className="heroAddress">{this.state.city}</div>
+          <div className="heroAddress">
+            {this.state.city ? this.state.city : this.state.area}
+          </div>
         </div>
         <div
           className="container"

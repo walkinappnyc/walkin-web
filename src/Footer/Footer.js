@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RecircCard from '../RecircCard/RecircCard';
+import { apiRoot } from '../apis';
 import { triggerPageViewEvent } from '../analytics';
 import './styles.scss';
 
@@ -13,12 +14,10 @@ class Footer extends Component {
   }
 
   componentDidMount() {
-    fetch('https://walkin-staging.herokuapp.com/api/properties')
+    fetch(`${apiRoot}/properties/`)
       .then(resp => resp.json())
       .then(data => {
-        const activeData = data.filter(
-          property => property.isActive && property.isFeatured
-        );
+        const activeData = data.filter(property => property.isActive);
         this.setState({ data: activeData });
       });
     triggerPageViewEvent();

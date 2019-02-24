@@ -28,9 +28,10 @@ class App extends Component {
             <Route path="/about" component={AboutPage} />
             <Route path="/city/:cityName" component={RegionPage} />
             <Route
-              path="/neighborhood/:neighborhoodhName"
+              path="/neighborhood/:neighborhoodName"
               component={RegionPage}
             />
+            <Route path="/units/all" component={RegionPage} />
             <Route path="/unit/:unitID" component={UnitPage} />
             <Route path="/youshallnotpass4876" component={ActivationPage} />
           </div>

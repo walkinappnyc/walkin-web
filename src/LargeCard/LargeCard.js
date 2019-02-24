@@ -78,7 +78,7 @@ const renderImages = (images, id) => {
 class LargeCard extends Component {
   render() {
     const { classes, property } = this.props;
-    if (!property) return null;
+    if (!property || !property.isActive) return null;
     return (
       <div
         className={`${classes} col-xs-12 col-sm-6 col-md-6 col-lg-4 largeCard`}

@@ -84,7 +84,7 @@ class Nav extends Component {
                                     Object.values(neighborhoods).slice(6, 11)
                                   )}
                                   <li>
-                                    <a href="/all">View All</a>
+                                    <a href="/units/all">View All</a>
                                   </li>
                                 </div>
                               </div>

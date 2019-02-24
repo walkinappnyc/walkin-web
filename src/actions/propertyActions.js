@@ -1,14 +1,12 @@
 /*
  src/actions/propertyActions.js
 */
-import { fetchData } from '../apis';
+import { apiRoot, fetchData } from '../apis';
 export const getData = () => dispatch => {
-  fetchData('https://walkin-staging.herokuapp.com/api/properties').then(
-    data => {
-      dispatch({
-        type: 'GET_DATA',
-        payload: data
-      });
-    }
-  );
+  fetchData(`${apiRoot}/properties`).then(data => {
+    dispatch({
+      type: 'GET_DATA',
+      payload: data
+    });
+  });
 };

@@ -84,12 +84,12 @@ const StickySide = ({ property }) => {
               type="button"
               className="btn btn-outline-primary btn-block btnMargin"
             >
-              <a href="https://goldfarbproperties.securecafe.com/onlineleasing/920-riverside-drive/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=218694&FloorPlanID=2043050&UnitID=3399531&header=1">
-                APPLY NOW
-              </a>
+              <a href={property.apply_url}>APPLY NOW</a>
             </button>
           </div>
-          <div className="col-md-12">{renderSeeApartmentBtn(property)}</div>
+          <div className="col-md-12 btnMargin">
+            {renderSeeApartmentBtn(property)}
+          </div>
         </div>
       </div>
     </div>
