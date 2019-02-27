@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
-import { triggerPageViewEvent } from '../analytics';
+import { triggerEvent } from '../analytics';
 import './styles.scss';
 
 function SampleNextArrow(props) {
@@ -10,7 +10,10 @@ function SampleNextArrow(props) {
     <div
       className={`${className} ${classes}`}
       style={{ display: 'block' }}
-      onClick={onClick}
+      onClick={() => {
+        triggerEvent('Event', 'Click | cardCarouselNextArrow');
+        onClick();
+      }}
     />
   );
 }
@@ -21,7 +24,10 @@ function SamplePrevArrow(props) {
     <div
       className={`${className} ${classes}`}
       style={{ display: 'block' }}
-      onClick={onClick}
+      onClick={() => {
+        triggerEvent('Event', 'Click | cardCarouselPrevArrow');
+        onClick();
+      }}
     />
   );
 }
@@ -68,7 +74,11 @@ const renderImages = (images, id) => {
   return images.map(image => {
     if (image.type === 'floorplan') return null;
     return (
-      <a key={id} href={`/unit/${id}`}>
+      <a
+        onClick={() => triggerEvent('Event', `Click | LargeCard | ${id}`)}
+        key={id}
+        href={`/unit/${id}`}
+      >
         <img alt={image.description} className="cardImage" src={image.url} />
       </a>
     );
@@ -103,7 +113,15 @@ class LargeCard extends Component {
                 <div>{property.details.bathrooms} BATH</div>
               </div>
               <div className="row justify-content-center">
-                <Link to={`/unit/${property.xml_id}`}>
+                <Link
+                  onClick={() =>
+                    triggerEvent(
+                      'Event',
+                      `Click | LargeCard | ${property.xml_id}`
+                    )
+                  }
+                  to={`/unit/${property.xml_id}`}
+                >
                   <div className="address ellipsis">
                     {property.location.address} {property.location.apartment},{' '}
                     {property.location.state} {property.location.zipcode}

@@ -8,3 +8,12 @@ export function initAnalytics() {
 export function triggerPageViewEvent() {
   ReactGA.pageview(document.location.pathname);
 }
+
+export function triggerEvent(category, action, label) {
+  ReactGA.event({
+    category,
+    action,
+    label
+  });
+}
+// onClick={() => triggerEvent('Event', `Click | LargeCard | ${id}`)}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import RecircCard from '../RecircCard/RecircCard';
 import { connect } from 'react-redux';
-import { triggerPageViewEvent } from '../analytics';
+import { triggerEvent } from '../analytics';
 import './styles.scss';
 
 class Nav extends Component {
@@ -18,6 +18,7 @@ class Nav extends Component {
   }
 
   mouseEnter = () => {
+    triggerEvent('Event', `navShow`);
     this.setState({ isOpen: true });
   };
 
@@ -34,7 +35,14 @@ class Nav extends Component {
     return items.map(value => {
       return (
         <li>
-          <a href={`/${area}/${value}`}>{value}</a>
+          <a
+            onClick={() =>
+              triggerEvent('Navigation', `Click | ${area} | ${value}`)
+            }
+            href={`/${area}/${value}`}
+          >
+            {value}
+          </a>
         </li>
       );
     });
@@ -48,7 +56,10 @@ class Nav extends Component {
         <nav>
           <div className="navbar fixed-top navbar-light box-shadow">
             <div className="container d-flex justify-content-between">
-              <Link to="/">
+              <Link
+                onClick={() => triggerEvent('Navigation', `Click | logo`)}
+                to="/"
+              >
                 <img className="logo" src="/logo.svg" alt="logo" />
               </Link>
               <span

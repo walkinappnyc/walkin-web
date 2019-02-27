@@ -9,7 +9,7 @@ import FloorplanModal from '../Modals/FloorplanModal';
 import StickySide from './StickySide';
 
 import { apiRoot } from '../apis';
-import { triggerPageViewEvent } from '../analytics';
+import { triggerEvent, triggerPageViewEvent } from '../analytics';
 import './styles.scss';
 
 function SampleNextArrow(props) {
@@ -18,7 +18,10 @@ function SampleNextArrow(props) {
     <div
       className={`${className} ${classes}`}
       style={{ display: 'block' }}
-      onClick={onClick}
+      onClick={() => {
+        triggerEvent('Event', 'Click | unitCarouselNextArrow');
+        onClick();
+      }}
     />
   );
 }
@@ -29,7 +32,10 @@ function SamplePrevArrow(props) {
     <div
       className={`${className} ${classes}`}
       style={{ display: 'block' }}
-      onClick={onClick}
+      onClick={() => {
+        triggerEvent('Event', 'Click | unitCarouselPrevArrow');
+        onClick();
+      }}
     />
   );
 }

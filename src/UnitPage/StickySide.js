@@ -1,5 +1,5 @@
 import React from 'react';
-import { triggerPageViewEvent } from '../analytics';
+import { triggerEvent } from '../analytics';
 import './styles.scss';
 
 const renderBedroomText = rooms => {
@@ -14,6 +14,7 @@ const renderSeeApartmentBtn = (property, walkin = null) => {
       <button
         type="button"
         className="btn btn-outline-primary btn-block btnMargin"
+        onClick={() => triggerEvent('Event', 'walkinButton')}
       >
         <img className="logoBtn" src="/logo.svg" alt="" />
       </button>
@@ -26,6 +27,7 @@ const renderSeeApartmentBtn = (property, walkin = null) => {
       className="btn btn-outline-primary btn-block"
       data-toggle="modal"
       data-target="#openHouses"
+      onClick={() => triggerEvent('Event', 'openHouseModal')}
     >
       Open Houses
     </button>
@@ -64,7 +66,10 @@ const StickySide = ({ property }) => {
             {property.location.state} {property.location.zipcode}
           </div>
           <div className="col-md-12 sidebarSection phone">
-            <a href={`tel:${property.agents[0].phone_number}`}>
+            <a
+              onClick={() => triggerEvent('Event', 'Click | phoneNumber')}
+              href={`tel:${property.agents[0].phone_number}`}
+            >
               <img className="svgStyles" src="/icons/phone.svg" alt="" />
               {property.agents[0].phone_number}
             </a>
@@ -73,6 +78,7 @@ const StickySide = ({ property }) => {
             <button
               type="button"
               className="btn btn-outline-primary btn-block"
+              onClick={() => triggerEvent('Event', 'Click | contactModal')}
               data-toggle="modal"
               data-target="#contact"
             >
@@ -82,9 +88,13 @@ const StickySide = ({ property }) => {
           <div className="col-md-12">
             <button
               type="button"
+              onClick={() => {
+                triggerEvent('Event', `Click | Applylink | ${property.xml_id}`);
+                window.open(`${property.apply_url}`, '_blank');
+              }}
               className="btn btn-outline-primary btn-block btnMargin"
             >
-              <a href={property.apply_url}>APPLY NOW</a>
+              APPLY NOW
             </button>
           </div>
           <div className="col-md-12 btnMargin">

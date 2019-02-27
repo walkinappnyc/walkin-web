@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import RecircCard from '../RecircCard/RecircCard';
 import { apiRoot } from '../apis';
-import { triggerPageViewEvent } from '../analytics';
+import { triggerEvent } from '../analytics';
 import './styles.scss';
 
 class Footer extends Component {
@@ -20,7 +20,6 @@ class Footer extends Component {
         const activeData = data.filter(property => property.isActive);
         this.setState({ data: activeData });
       });
-    triggerPageViewEvent();
   }
 
   render() {
@@ -75,17 +74,32 @@ class Footer extends Component {
             <div className="row justify-content-center">
               <ul className="footerSocial">
                 <li>
-                  <a href="https://www.facebook.com/Walkin-492748721245562">
+                  <a
+                    onClick={() =>
+                      triggerEvent('Event', 'Click | Social | facebook')
+                    }
+                    href="https://www.facebook.com/Walkin-492748721245562"
+                  >
                     <img alt="" src="/icons/facebook.svg" />
                   </a>
                 </li>
                 <li>
-                  <a href="https://twitter.com/walkdotin">
+                  <a
+                    onClick={() =>
+                      triggerEvent('Event', 'Click | Social | twitter')
+                    }
+                    href="https://twitter.com/walkdotin"
+                  >
                     <img alt="" src="/icons/twitter.svg" />
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.instagram.com/walkdotin">
+                  <a
+                    onClick={() =>
+                      triggerEvent('Event', 'Click | Social | instagram')
+                    }
+                    href="https://www.instagram.com/walkdotin"
+                  >
                     <img alt="" src="/icons/instagram.svg" />
                   </a>
                 </li>

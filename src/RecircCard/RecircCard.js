@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { triggerPageViewEvent } from '../analytics';
+import { triggerEvent } from '../analytics';
 import './styles.scss';
 
 function renderBedroomText(rooms) {
@@ -14,7 +14,13 @@ class RecircCard extends Component {
     if (!property) return null;
     return (
       <div className={`${classes} card mb-4 box-shadow recircCard`}>
-        <a href={`/unit/${property.xml_id}`} key={property.xml_id}>
+        <a
+          onClick={() =>
+            triggerEvent('Event', `Click | smallCard | ${property.xml_id}`)
+          }
+          href={`/unit/${property.xml_id}`}
+          key={property.xml_id}
+        >
           <div className="row">
             <div className="col-4">
               <img alt="" className="recircImage" src={property.media[0].url} />
