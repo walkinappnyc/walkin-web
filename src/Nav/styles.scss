@@ -11,6 +11,19 @@
   .rentalsBtn {
     padding: 20px;
     cursor: pointer;
+
+    &.desktop {
+      display: none;
+      @media (min-width: 576px) {
+        display: block;
+      }
+    }
+    &.mobile {
+      display: block;
+      @media (min-width: 576px) {
+        display: none;
+      }
+    }
   }
 }
 
@@ -29,9 +42,6 @@
   top: 64px;
   z-index: 2;
 
-  @media (min-width: 576px) {
-    height: 340px;
-  }
   .menuHeader {
     font-family: 'roboto-light';
   }
@@ -40,8 +50,10 @@
     list-style: none;
     padding: 0;
     text-align: left;
-    li {
-    }
+  }
+
+  @media (min-width: 576px) {
+    height: 340px;
   }
 }
 

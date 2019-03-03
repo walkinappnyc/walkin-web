@@ -22,10 +22,10 @@ class RecircCard extends Component {
           key={property.xml_id}
         >
           <div className="row">
-            <div className="col-4">
+            <div className="col-5 col-lg-4">
               <img alt="" className="recircImage" src={property.media[0].url} />
             </div>
-            <div className="col-8">
+            <div className="col-7 col-lg-8">
               <div className="container gutters justify-content-left details">
                 <div className="text-primary justify-content-left region">
                   {property.neighborhood}

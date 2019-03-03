@@ -34,7 +34,7 @@ class Nav extends Component {
   renderNavItems(area, items) {
     return items.map(value => {
       return (
-        <li>
+        <li className="menuItem">
           <a
             onClick={() =>
               triggerEvent('Navigation', `Click | ${area} | ${value}`)
@@ -63,7 +63,7 @@ class Nav extends Component {
                 <img className="logo" src="/logo.svg" alt="logo" />
               </Link>
               <span
-                className="rentalsBtn"
+                className="rentalsBtn desktop"
                 onMouseEnter={this.mouseEnter}
                 onMouseLeave={this.mouseLeave}
               >
@@ -94,7 +94,56 @@ class Nav extends Component {
                                     'neighborhood',
                                     Object.values(neighborhoods).slice(6, 11)
                                   )}
-                                  <li>
+                                  <li className="menuItem">
+                                    <a href="/units/all">View All</a>
+                                  </li>
+                                </div>
+                              </div>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-4">
+                        <div className="menuHeader">FEATURED RENTALS</div>
+                        <RecircCard property={properties['0']} />
+                        <RecircCard property={properties['1']} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </span>
+              <span
+                className="rentalsBtn mobile"
+                onClick={this.state.isOpen ? this.mouseLeave : this.mouseEnter}
+              >
+                Rentals
+                <div className={this.dropNavClasses()}>
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-md-8">
+                        <div className="row">
+                          <div className="col-6 col-md-4">
+                            <ul>
+                              <li className="menuHeader">CITYS</li>
+                              {this.renderNavItems('city', citys)}
+                            </ul>
+                          </div>
+                          <div className="col-6 col-md-8">
+                            <ul>
+                              <li className="menuHeader">NEIGHBORHOODS</li>
+                              <div className="row">
+                                <div className="col-md-6">
+                                  {this.renderNavItems(
+                                    'neighborhood',
+                                    Object.values(neighborhoods).slice(0, 6)
+                                  )}
+                                </div>
+                                <div className="col-md-6">
+                                  {this.renderNavItems(
+                                    'neighborhood',
+                                    Object.values(neighborhoods).slice(6, 11)
+                                  )}
+                                  <li className="menuItem">
                                     <a href="/units/all">View All</a>
                                   </li>
                                 </div>

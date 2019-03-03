@@ -26,7 +26,6 @@ const OpenHouseModal = props => {
     }
   };
   const renderOpenHousesList = () => {
-    debugger;
     if (!openHouses) return null;
     return openHouses.map(date => {
       return (
