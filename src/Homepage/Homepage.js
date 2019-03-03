@@ -17,19 +17,22 @@ class Homepage extends Component {
 
   renderCards() {
     const { properties } = this.props;
-
+    let propertyHolder = properties.filter(
+      property => property.isActive && property.isFeatured
+    );
+    debugger;
     var index = 0;
-    var arrayLength = properties.length;
+    var arrayLength = propertyHolder.length;
     var tempArray = [];
 
     for (index = 0; index < arrayLength; index += 3) {
-      let myChunk = properties.slice(index, index + 3);
+      let myChunk = propertyHolder.slice(index, index + 3);
       // Do something if you want with the group
       tempArray.push(myChunk);
     }
 
-    return tempArray.map((properties, index) => {
-      if (properties.length < 3) return null;
+    return tempArray.map((propertyHolder, index) => {
+      if (propertyHolder.length < 3) return null;
       const backgroundColor =
         index % 2 === 0 ? 'bg-color-grey' : 'bg-color-purple';
 

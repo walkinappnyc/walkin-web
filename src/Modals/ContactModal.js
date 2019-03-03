@@ -1,5 +1,4 @@
 import React from 'react';
-import { triggerPageViewEvent } from '../analytics';
 
 const sendEmail = e => {
   console.log(e);

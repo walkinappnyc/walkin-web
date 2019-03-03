@@ -1,5 +1,4 @@
 import React from 'react';
-import { triggerPageViewEvent } from '../analytics';
 
 const FloorplanModal = props => {
   const { floorPlan } = props;

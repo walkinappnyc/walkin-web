@@ -4,7 +4,7 @@
   max-width: 367px;
 
   .recircImage {
-    width: 136px;
+    width: 135px;
   }
 
   .region {
@@ -50,8 +50,9 @@
 
   .details {
     padding: 0 12px 0 15px;
-    @media (min-width: 576px) {
+    @media (min-width: 992px) {
       margin: 0;
+      width: 203px;
     }
   }
 }

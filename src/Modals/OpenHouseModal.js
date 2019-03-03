@@ -1,5 +1,4 @@
 import React from 'react';
-import { triggerPageViewEvent } from '../analytics';
 import './styles.scss';
 
 const OpenHouseModal = props => {

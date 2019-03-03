@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
-import { triggerPageViewEvent } from '../analytics';
 import './styles.scss';
 
 function SampleNextArrow(props) {

@@ -46,11 +46,7 @@ const mapDispatchToProps = dispatch => ({
   getData: () => dispatch(getData())
 });
 
-const mapStateToProps = state => ({
-  ...state
-});
-
 export default connect(
-  mapDispatchToProps,
+  null,
   mapDispatchToProps
 )(App);
