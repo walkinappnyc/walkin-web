@@ -41,7 +41,8 @@
   right: 0;
   top: 64px;
   z-index: 2;
-
+  overflow: hidden;
+  overflow-y: scroll;
   .menuHeader {
     font-family: 'roboto-light';
   }
@@ -54,6 +55,8 @@
 
   @media (min-width: 576px) {
     height: 340px;
+    overflow: visible;
+    overflow-y: visible;
   }
 }
 

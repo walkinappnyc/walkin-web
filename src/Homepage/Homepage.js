@@ -20,7 +20,6 @@ class Homepage extends Component {
     let propertyHolder = properties.filter(
       property => property.isActive && property.isFeatured
     );
-    debugger;
     var index = 0;
     var arrayLength = propertyHolder.length;
     var tempArray = [];
