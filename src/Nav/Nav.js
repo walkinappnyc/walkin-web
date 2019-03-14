@@ -124,7 +124,7 @@ class Nav extends Component {
                         <div className="row">
                           <div className="col-6 col-md-4">
                             <ul>
-                              <li className="menuHeader">CITYS</li>
+                              <li className="menuHeader">CITIES</li>
                               {this.renderNavItems('city', citys)}
                             </ul>
                           </div>

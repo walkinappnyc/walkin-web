@@ -1,3 +1,4 @@
+import { uniqBy } from 'lodash';
 /*
  src/reducers/simpleReducer.js
 */
@@ -13,6 +14,9 @@ export default (
 ) => {
   switch (action.type) {
     case 'GET_DATA':
+      const dedupedProperties = uniqBy(action.payload, function(property) {
+        return [property.location.address, property.location.apartment].join();
+      }).filter(property => property.isActive);
       const navCitys = action.payload
         .map(function(value) {
           return value.nav_city;
@@ -30,7 +34,7 @@ export default (
         })
         .sort();
       return {
-        data: [...action.payload],
+        data: [...dedupedProperties],
         navItems: {
           citys: [...new Set(navCitys)],
           neighborhoods: [...new Set(navNeighborhoods)]

@@ -5,6 +5,7 @@
   "dependencies": {
     "bootstrap-material-design": "^4.1.1",
     "emailjs-com": "2.3.2",
+    "lodash": "^4.17.11",
     "node-sass": "^4.9.4",
     "placeholder-loading": "^0.1.5",
     "react": "^16.5.2",

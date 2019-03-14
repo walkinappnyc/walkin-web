@@ -17,12 +17,10 @@ class Homepage extends Component {
 
   renderCards() {
     const { properties } = this.props;
-    let propertyHolder = properties.filter(
-      property => property.isActive && property.isFeatured
-    );
-    var index = 0;
-    var arrayLength = propertyHolder.length;
-    var tempArray = [];
+    let propertyHolder = properties.filter(property => property.isFeatured);
+    let index = 0;
+    let arrayLength = propertyHolder.length;
+    let tempArray = [];
 
     for (index = 0; index < arrayLength; index += 3) {
       let myChunk = propertyHolder.slice(index, index + 3);
@@ -31,6 +29,7 @@ class Homepage extends Component {
     }
 
     return tempArray.map((propertyHolder, index) => {
+      console.log(propertyHolder);
       if (propertyHolder.length < 3) return null;
       const backgroundColor =
         index % 2 === 0 ? 'bg-color-grey' : 'bg-color-purple';
@@ -43,15 +42,18 @@ class Homepage extends Component {
                 <div className="col-12 col-sm-7">
                   <LargeCard
                     classes={'hugeCard paddingZero'}
-                    property={properties[0]}
+                    property={propertyHolder[0]}
                   />
                 </div>
                 <div className="col-12 col-sm-5">
                   <LargeCard
                     classes={'floatLeft paddingZero'}
-                    property={properties[1]}
+                    property={propertyHolder[1]}
                   />
-                  <RecircCard property={properties[2]} classes={'floatLeft'} />
+                  <RecircCard
+                    property={propertyHolder[2]}
+                    classes={'floatLeft'}
+                  />
                 </div>
               </div>
             </div>
@@ -63,13 +65,16 @@ class Homepage extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-12 col-sm-5">
-                  <LargeCard classes={'paddingZero'} property={properties[1]} />
-                  <RecircCard property={properties[2]} />
+                  <LargeCard
+                    classes={'paddingZero'}
+                    property={propertyHolder[1]}
+                  />
+                  <RecircCard property={propertyHolder[2]} />
                 </div>
                 <div className="col-12 col-sm-7">
                   <LargeCard
                     classes={'hugeCard paddingZero floatLeft'}
-                    property={properties[0]}
+                    property={propertyHolder[0]}
                   />
                 </div>
               </div>

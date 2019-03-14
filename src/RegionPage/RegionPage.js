@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LargeCard from '../LargeCard/LargeCard';
+import { uniqBy } from 'lodash';
 import { triggerPageViewEvent } from '../analytics';
 import { apiRoot, fetchData, getFilteredProperties } from '../apis';
 import './styles.scss';
@@ -32,7 +33,17 @@ class RegionPage extends Component {
     const paramArea = city ? city : area;
     if (window.location.pathname === '/units/all') {
       fetchData(`${apiRoot}/properties/`).then(data => {
-        this.setState({ data, validUnits: data, area: 'All Properties' });
+        const uniqValidData = uniqBy(data, function(property) {
+          return [
+            property.location.address,
+            property.location.apartment
+          ].join();
+        }).filter(property => property.isActive);
+        this.setState({
+          data: uniqValidData,
+          validUnits: uniqValidData,
+          area: 'All Properties'
+        });
       });
     } else {
       getFilteredProperties(paramType, paramArea).then(data => {
