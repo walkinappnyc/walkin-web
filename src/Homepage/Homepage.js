@@ -85,7 +85,7 @@ class Homepage extends Component {
     if (!properties) return null;
     return (
       <div>
-        <img alt="" style={{ width: '100%' }} src="welcome.jpg" />
+        <img alt="" style={{ width: '100%' }} src="welcome-min.jpeg" />
         <div className="container-fluid">
           {/* This is the Homepage header before the listings */}
           {/* <div className="homepageHeader">Featured Rentals</div> */}
