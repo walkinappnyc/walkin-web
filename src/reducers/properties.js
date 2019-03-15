@@ -1,4 +1,5 @@
 import { uniqBy } from 'lodash';
+import { uniqHelper } from '../uniqHelper';
 /*
  src/reducers/simpleReducer.js
 */
@@ -14,9 +15,7 @@ export default (
 ) => {
   switch (action.type) {
     case 'GET_DATA':
-      const dedupedProperties = uniqBy(action.payload, function(property) {
-        return [property.location.address, property.location.apartment].join();
-      }).filter(property => property.isActive);
+      const dedupedProperties = uniqHelper(action.payload);
       const navCitys = action.payload
         .map(function(value) {
           return value.nav_city;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import RecircCard from '../RecircCard/RecircCard';
 import { apiRoot } from '../apis';
 import { triggerEvent } from '../analytics';
+import { uniqHelper } from '../uniqHelper';
 import './styles.scss';
 
 class Footer extends Component {
@@ -17,7 +18,7 @@ class Footer extends Component {
     fetch(`${apiRoot}/properties/`)
       .then(resp => resp.json())
       .then(data => {
-        const activeData = data.filter(property => property.isActive);
+        const activeData = uniqHelper(data);
         this.setState({ data: activeData });
       });
   }
