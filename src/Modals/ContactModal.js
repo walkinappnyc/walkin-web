@@ -1,23 +1,18 @@
 import React from 'react';
 
 const sendEmail = e => {
-  console.log(e);
   e.preventDefault();
-  window.emailjs
-    .send('yamikamisama_gmail_com', 'template_7m0IX5qp', {
-      subject: 'Apt 123',
-      from_name: 'asd',
-      to_name: 'asd',
-      message_html: 'asd'
+  fetch('https://walkinapp-236920.appspot.com/mail', {
+    method: 'POST',
+    'Content-Type': 'JSON',
+    body: JSON.stringify({
+      to: 'yamikamisama@gmail.com',
+      from: 'michaelangelodecarlo@gmail.com',
+      subject: 'Apt from walkin',
+      text: 'Text from walkin',
+      html: 'Text from walkin'
     })
-    .then(
-      function(response) {
-        console.log('SUCCESS!', response.status, response.text);
-      },
-      function(err) {
-        console.log('FAILED...', err);
-      }
-    );
+  });
 };
 
 const ContactModal = () => {
