@@ -7,6 +7,7 @@ import ContactModal from '../Modals/ContactModal';
 import OpenHouseModal from '../Modals/OpenHouseModal';
 import FloorplanModal from '../Modals/FloorplanModal';
 import StickySide from './StickySide';
+import { ToastContainer } from 'react-toastify';
 
 import { apiRoot } from '../apis';
 import { triggerEvent, triggerPageViewEvent } from '../analytics';
@@ -129,6 +130,9 @@ class UnitPage extends Component {
   render() {
     const { property } = this.state;
     if (!property) return null;
+    const address = `${property.location.address} ${
+      property.location.apartment
+    }, ${property.location.state} ${property.location.zipcode}`;
     const floorPlan =
       property.media[property.media.length - 1].type === 'floorplan'
         ? property.media[property.media.length - 1].url
@@ -206,9 +210,14 @@ class UnitPage extends Component {
           <div className="row">{this.renderCards()}</div>
         </div>
 
-        <ContactModal />
+        <ContactModal address={address} emailTo={property.agents[0].email} />
         <OpenHouseModal openHouses={property.open_houses} />
         <FloorplanModal floorPlan={floorPlan} />
+        <ToastContainer
+          pauseOnHover={false}
+          position="bottom-center"
+          autoClose={3500}
+        />
       </div>
     );
   }

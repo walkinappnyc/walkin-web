@@ -29,7 +29,6 @@ class Homepage extends Component {
     }
 
     return tempArray.map((propertyHolder, index) => {
-      console.log(propertyHolder);
       if (propertyHolder.length < 3) return null;
       const backgroundColor =
         index % 2 === 0 ? 'bg-color-grey' : 'bg-color-purple';

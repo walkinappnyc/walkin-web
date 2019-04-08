@@ -1,4 +1,3 @@
-import { uniqBy } from 'lodash';
 import { uniqHelper } from '../uniqHelper';
 /*
  src/reducers/simpleReducer.js

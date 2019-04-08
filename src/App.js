@@ -11,6 +11,7 @@ import RegionPage from './RegionPage/RegionPage';
 import UnitPage from './UnitPage/UnitPage';
 import { getData } from './actions/propertyActions';
 import { connect } from 'react-redux';
+import 'react-toastify/dist/ReactToastify.css';
 
 class App extends Component {
   componentDidMount() {
