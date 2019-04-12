@@ -206,7 +206,7 @@ class RegionPage extends Component {
                       this.updateRange(e);
                     }}
                     type="number"
-                    placeholder="$Maxium"
+                    placeholder="$Maximum"
                   />
                 </div>
               </div>
