@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import { initAnalytics } from './analytics';
 import AboutPage from './AboutPage/AboutPage';
+import Redirect from './Redirect/Redirect';
 import ActivationPage from './ActivationPage/ActivationPage';
 import Footer from './Footer/Footer';
 import Homepage from './Homepage/Homepage';
@@ -35,6 +36,8 @@ class App extends Component {
             <Route path="/units/all" component={RegionPage} />
             <Route path="/unit/:unitID" component={UnitPage} />
             <Route path="/youshallnotpass4876" component={ActivationPage} />
+
+            <Route path="/redirects/:unitId" component={Redirect} />
           </div>
           <Footer />
         </div>

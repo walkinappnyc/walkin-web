@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { triggerEvent } from '../analytics';
 import './styles.scss';
 
@@ -96,6 +97,14 @@ const StickySide = ({ property }) => {
             >
               APPLY NOW
             </button>
+          </div>
+          <div className="col-md-12">
+            <Link
+              to={`/redirects/${property.unit_id}`}
+              className="btn btn-outline-primary btn-block btnMargin"
+            >
+              OPEN ON MOBILE
+            </Link>
           </div>
           <div className="col-md-12 btnMargin">
             {renderSeeApartmentBtn(property)}
