@@ -4,7 +4,7 @@
     "details": [
     {
       "appID": "34499XDA9F.com.goldprop.walkin",
-      "paths": ["/unit/*"]
+      "paths": ["/redirects/*"]
     }
     ]
   }
