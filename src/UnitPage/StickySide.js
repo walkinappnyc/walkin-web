@@ -100,7 +100,10 @@ const StickySide = ({ property }) => {
           </div>
           <div className="col-md-12">
             <Link
-              to={`/redirects/${property.unit_id}`}
+              to={{
+                pathname: `/redirects/${property.unit_id}`,
+                from: `/unit/${property.xml_id}`
+              }}
               className="btn btn-outline-primary btn-block btnMargin"
             >
               OPEN ON MOBILE

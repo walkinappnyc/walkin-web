@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 class Redirects extends Component {
   render() {
-    return <Redirect to={'/'}/>;
+    return <Redirect to={this.props.location.from}/>;
   }
 }
 
