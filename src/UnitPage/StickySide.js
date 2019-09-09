@@ -8,33 +8,6 @@ const renderBedroomText = rooms => {
   return `${rooms} BED`;
 };
 
-const renderSeeApartmentBtn = (property, walkin = null) => {
-  if (!walkin && property.open_houses.length < 1) return null;
-  if (walkin) {
-    return (
-      <button
-        type="button"
-        className="btn btn-outline-primary btn-block btnMargin"
-        onClick={() => triggerEvent('Event', 'walkinButton')}
-      >
-        <img className="logoBtn" src="/logo.svg" alt="" />
-      </button>
-    );
-  }
-
-  return (
-    <button
-      type="button"
-      className="btn btn-outline-primary btn-block"
-      data-toggle="modal"
-      data-target="#openHouses"
-      onClick={() => triggerEvent('Event', 'openHouseModal')}
-    >
-      Open Houses
-    </button>
-  );
-};
-
 const renderWalkInDeepLink = (property = {}) => {
   const { branchio_link: branchIOLink } = property;
 
@@ -124,9 +97,6 @@ const StickySide = ({ property }) => {
             >
               APPLY NOW
             </button>
-          </div>
-          <div className="col-md-12 btnMargin">
-            {renderSeeApartmentBtn(property)}
           </div>
           {renderWalkInDeepLink(property)}
         </div>
