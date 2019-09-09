@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import { triggerEvent } from '../analytics';
 import './styles.scss';
+import AppStoreLogo from '../app-store.svg';
 
 const renderBedroomText = rooms => {
   if (rooms === '0') return 'STUDIO';
@@ -34,6 +34,33 @@ const renderSeeApartmentBtn = (property, walkin = null) => {
     </button>
   );
 };
+
+const renderWalkInDeepLink = (property = {}) => {
+  const { branchio_link: branchIOLink } = property;
+
+  if (!branchIOLink) {
+    return null;
+  }
+
+  return (
+    <div className="col-md-12">
+      <a
+        href={branchIOLink}
+        className="btn btn-outline-primary btn-block btnMargin walkInBtn"
+      >
+        OPEN ON MOBILE - SELF TOUR
+        <div class="logos">
+          <img className="logo walkInLogo" src="/logo.svg" alt="Walk.in logo" />
+          <img
+            className="logo appStoreLogo"
+            src={AppStoreLogo}
+            alt="Download on the App Store Badge"
+          />
+        </div>
+      </a>
+    </div>
+  );
+}
 
 const StickySide = ({ property }) => {
   return (
@@ -98,17 +125,10 @@ const StickySide = ({ property }) => {
               APPLY NOW
             </button>
           </div>
-          <div className="col-md-12">
-            <Link
-              to={`/redirects/${property.unit_id}`}
-              className="btn btn-outline-primary btn-block btnMargin"
-            >
-              OPEN ON MOBILE
-            </Link>
-          </div>
           <div className="col-md-12 btnMargin">
             {renderSeeApartmentBtn(property)}
           </div>
+          {renderWalkInDeepLink(property)}
         </div>
       </div>
     </div>
