@@ -4,6 +4,7 @@ import { apiRoot } from '../apis';
 import { triggerEvent } from '../analytics';
 import { uniqHelper } from '../uniqHelper';
 import './styles.scss';
+import {Link} from "react-router-dom";
 
 class Footer extends Component {
   constructor(props) {
@@ -12,6 +13,8 @@ class Footer extends Component {
     this.state = {
       data: null
     };
+
+    this.year = (new Date()).getFullYear();
   }
 
   componentDidMount() {
@@ -106,7 +109,12 @@ class Footer extends Component {
                 </li>
               </ul>
             </div>
-            <div className="row justify-content-center">©2018 Walk.in</div>
+            <div className="row">
+              <div className="col-sm-12">
+                <Link to={`/support`}>Support</Link>
+              </div>
+            </div>
+            <div className="row justify-content-center">©{this.year} Walk.in</div>
           </div>
         </footer>
       </div>
