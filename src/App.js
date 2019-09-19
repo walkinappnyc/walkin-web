@@ -10,6 +10,7 @@ import Homepage from './Homepage/Homepage';
 import Nav from './Nav/Nav';
 import RegionPage from './RegionPage/RegionPage';
 import UnitPage from './UnitPage/UnitPage';
+import SupportPage from './Support/SupportPage';
 import { getData } from './actions/propertyActions';
 import { connect } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
@@ -23,7 +24,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
+        <div className="App container">
           <Nav />
           <div style={{ marginTop: '64px' }}>
             <Route path="/" exact component={Homepage} />
@@ -38,6 +39,8 @@ class App extends Component {
             <Route path="/youshallnotpass4876" component={ActivationPage} />
 
             <Route path="/redirects/:unitId" component={Redirect} />
+
+            <Route path="/support" component={SupportPage} />
           </div>
           <Footer />
         </div>
