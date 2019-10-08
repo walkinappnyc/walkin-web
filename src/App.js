@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import { initAnalytics } from './analytics';
 import AboutPage from './AboutPage/AboutPage';
+import PrivacyPage from './PrivacyPage/PrivacyPage';
 import Redirect from './Redirect/Redirect';
 import ActivationPage from './ActivationPage/ActivationPage';
 import Footer from './Footer/Footer';
@@ -41,6 +42,7 @@ class App extends Component {
             <Route path="/redirects/:unitId" component={Redirect} />
 
             <Route path="/support" component={SupportPage} />
+            <Route path="/privacy" component={PrivacyPage} />
           </div>
           <Footer />
         </div>

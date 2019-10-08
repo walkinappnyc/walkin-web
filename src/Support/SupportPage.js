@@ -110,9 +110,24 @@ class SupportPage extends Component {
     const toShow = this.state.isSubmitted ? successMessage : supportForm;
 
     return (
-      <div className="row" style={{ marginTop: '100px' }}>
-        <div className="offset-md-3 col-md-6 col-sm-12">
-          {toShow}
+      <div className="support">
+      <div
+        className="container-fluid"
+        style={{
+          backgroundColor: '#6d5b97',
+          padding: '27px 0',
+          marginBottom: '39px'
+        }}>
+        <div className="heroAddress"
+          style={{
+            color: '#fff',
+          fontSize: '52px'
+        }}>Support</div>
+      </div>
+        <div className="row" style={{ marginTop: '100px' }}>
+          <div className="offset-md-3 col-md-6 col-sm-12">
+            {toShow}
+          </div>
         </div>
       </div>
     );
