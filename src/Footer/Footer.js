@@ -111,7 +111,8 @@ class Footer extends Component {
             </div>
             <div className="row">
               <div className="col-sm-12">
-                <Link to={`/support`}>Support</Link>
+                <Link to={`/support`}>Support</Link>&nbsp;|&nbsp;
+                <Link to={`/privacy`}>Privacy Policy</Link>
               </div>
             </div>
             <div className="row justify-content-center">©{this.year} Walk.in</div>
