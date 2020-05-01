@@ -29,6 +29,7 @@ class App extends Component {
           <Nav />
           <div style={{ marginTop: '64px' }}>
             <Route path="/" exact component={Homepage} />
+            <Route path="/marketplace" exact component={Homepage} />
             <Route path="/about" component={AboutPage} />
             <Route path="/city/:cityName" component={RegionPage} />
             <Route
